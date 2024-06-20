@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/AuthenticationContext";
 import { useWallet } from "../context/WalletContext";
@@ -39,6 +39,36 @@ const Transfer = ({ setTransferForm }) => {
     }
 
     try {
+      // Fetch the wallet data
+      const walletResponse = await axios.get(
+        `http://127.0.0.1:8000/api/wallet/${user.username}/`,
+        {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authTokens.access}`,
+          },
+        }
+      );
+
+      const walletData = walletResponse.data;
+
+      // Check if the balance is sufficient
+      if (walletData.balance < parseFloat(amount)) {
+        setMessage("Insufficient funds");
+        setShowMessage(true);
+        setTimeout(() => setShowMessage(false), 3000);
+        return;
+      }
+
+      // Check if the provided PIN matches the stored PIN
+      if (walletData.wallet_name.transaction_pin !== pin) {
+        setMessage("Incorrect PIN");
+        setShowMessage(true);
+        setTimeout(() => setShowMessage(false), 3000);
+        return;
+      }
+
+      // Perform the transfer
       const response = await axios.post(
         "http://127.0.0.1:8000/api/transfer/",
         {
@@ -93,7 +123,7 @@ const Transfer = ({ setTransferForm }) => {
           />
 
           <input
-            type="number"
+            type="text"
             value={amount}
             onChange={(e) => setAmount(e.target.value)}
             placeholder="Amount"
