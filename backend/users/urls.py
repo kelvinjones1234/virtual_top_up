@@ -1,0 +1,27 @@
+from django.urls import path
+from rest_framework_simplejwt.views import (
+    TokenRefreshView,
+)
+
+from .views import (
+  UserDetail,
+  MyTokenObtainPairView, 
+  RegisterView, 
+  TransferView, 
+  NotificationListView,
+   WalletDetailView,
+)
+
+urlpatterns = [
+  path('token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
+  path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+  path('authentication/register/', RegisterView.as_view(), name='register'),
+
+  # transfer and notifications
+  path('wallet/<str:wallet_name__username>/', WalletDetailView.as_view(), name='wallet_detail'),
+  path('transfer/', TransferView.as_view(), name='transfer'),
+  path('notifications/', NotificationListView.as_view(), name='notifications'),
+
+  # user profile display and update endpoint
+  path('user/', UserDetail.as_view(), name='user-detail')
+]
