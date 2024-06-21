@@ -29,8 +29,8 @@ export const WalletProvider = ({ children }) => {
       }
     };
 
-    fetchWalletData();
-  }, [authTokens, user]);
+    user && authTokens && fetchWalletData();
+  }, [user, authTokens]);
 
   const updateWalletBalance = (newBalance) => {
     setWalletData((prevData) => ({

@@ -68,6 +68,13 @@ const Transfer = ({ setTransferForm }) => {
         return;
       }
 
+      if (walletData.wallet_name.phone_number === phoneNumber) {
+        setMessage("Cannot Transfer to self");
+        setShowMessage(true);
+        setTimeout(() => setShowMessage(false), 3000);
+        return;
+      }
+
       // Perform the transfer
       const response = await axios.post(
         "http://127.0.0.1:8000/api/transfer/",
@@ -98,7 +105,7 @@ const Transfer = ({ setTransferForm }) => {
       setPin("");
     } catch (error) {
       console.error("Transfer Error:", error);
-      setMessage("Transfer failed. Please try again.");
+      setMessage(error.response.data.error);
       setShowMessage(true);
       setTimeout(() => setShowMessage(false), 3000);
     }
