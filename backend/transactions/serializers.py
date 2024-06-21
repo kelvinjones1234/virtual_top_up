@@ -10,7 +10,7 @@ class TransactionSerializer(serializers.ModelSerializer):
   class Meta:
     model = Transaction
     fields = (
-        'id', 
+        'transaction_ref_no', 
         'wallet',
         'transaction_type',
         'product',

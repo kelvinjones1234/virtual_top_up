@@ -9,7 +9,7 @@ class Transaction(models.Model):
         ('P', 'Pending'),
         ('F', 'Failed')
     )
-    id = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False, verbose_name="Transaction ID")
+    transaction_ref_no = models.UUIDField(default=uuid.uuid4, editable=False, verbose_name="Transaction ID")
     wallet = models.ForeignKey(Wallet, on_delete=models.CASCADE)
     transaction_type = models.ForeignKey(ProductCategory, on_delete=models.CASCADE)
     product = models.CharField(max_length=100)
@@ -18,6 +18,6 @@ class Transaction(models.Model):
     date_create = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.product.product
+        return self.product
 
 
