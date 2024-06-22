@@ -11,7 +11,6 @@ const UserDashBoard = () => {
   const { productData } = useContext(ProductContext);
   const { walletData } = useWallet();
 
-  console.log(walletData);
   return (
     <div className="bg-bg_on h-auto bg-contain bg-no-repeat mt-[20vh] sm:bg-cover bg-center px-4 ss:px-[5rem] sm:px-[1rem] sm:flex gap-5 md:gap-12 justify-center lg:mx-[5rem] font-body_two">
       {/* left layer */}

@@ -6,6 +6,14 @@ from rest_framework import status
 from rest_framework.response import Response
 
 class TransactionView(APIView):
+    def get(self, request):
+        user = request.user.id
+        print(user)
+        transaction = Transaction.objects.filter(wallet=user)
+        serializer = TransactionSerializer(transaction, many=True)
+        return Response(serializer.data, status=status.HTTP_200_OK)
+
+
     def post(self, request):
         serializer = TransactionSerializer(data=request.data)
         if serializer.is_valid():

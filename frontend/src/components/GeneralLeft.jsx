@@ -39,7 +39,7 @@ const GeneralLeft = () => {
   };
 
   return (
-    <div className="w-[25rem] h-[calc(100vh-25vh)] bord hidden pr-5 sm:block overflow-y-auto sticky top-[15vh] self-start font-body_two custom-scrollbar">
+    <div className="w-[25rem] h-[calc(100vh-25vh)] hidden pr-5 sm:block overflow-y-auto sticky top-[15vh] self-start font-body_two custom-scrollbar">
       <div>
         <div
           className={`py-[.7rem] rounded-xl font-bold text-white px-4 mt-4 max-w-[13rem] sm:mt-0 ${
