@@ -1,4 +1,4 @@
-import { useState, useEffect, React } from "react";
+import { useState, useEffect, React, useContext } from "react";
 import { Link } from "react-router-dom";
 import menu from "../assets/menu.svg";
 import close from "../assets/close.svg";
@@ -6,10 +6,12 @@ import notification from "../assets/notification.svg";
 import GeneralSidebar from "./GeneralSidebar";
 import dark from "../assets/dark.svg";
 import light from "../assets/light.svg";
+import { AuthContext } from "../context/AuthenticationContext";
 
 const GeneralNavbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [darkMode, setDarkMode] = useState(true);
+  const { user } = useContext(AuthContext);
 
   const [generalMenuToggle, setGeneralMenuToggle] = useState(false);
 
@@ -53,10 +55,19 @@ const GeneralNavbar = () => {
       >
         <div className="flex justify-between lg:px-[6rem] w-[2000px] mx-auto">
           <div className="left flex gap-6 items-center">
-            <div className="logo text-white sm:mr-[3rem]">
-              <Link to={"/"}>Atom</Link>
+            <div className="flex items-center gap-1">
+              <Link to={"/"}>
+                <div className="logo bg-black font-heading_one text-link border px-2 text-[.7rem] px-2 border-white rounded-[.5rem] font-bold">
+                  Atom
+                </div>
+              </Link>
+              <div className="h-3 w-3 bg-link rounded-full"></div>
+              <div className="h-2 w-2 bg-link rounded-full"></div>
+              <div className="h-1 w-1 bg-link rounded-full"></div>
             </div>
-            <div className="text-white font-bold">Hi, PRAISE</div>
+            <div className="text-white font-bold">
+              Hi, {user.first_name.toUpperCase()}
+            </div>
           </div>
           <div className="light-dark-mode hidden sm:block">
             <div className="light-dark-mode justify-center py-[.5rem] gap-8 rounded-xl flex items-center font-bold text-white px-3 bg-white bg-opacity-20 hover:bg-opacity-10 transition duration-300 ease-in-out cursor-pointer">

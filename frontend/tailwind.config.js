@@ -11,12 +11,16 @@ export default {
       backgroundImage: {
       "bg_one": "url('/src/assets/vtu4.png')",
       "bg_two": "url('/src/assets/why_us.png')",
+      'custom-gradient': 'linear-gradient(250deg, #2b4162 -50%, #0A101D 100%)',
+
+
       },
       colors: {
         primary: "#0A101D",
         secondary: "#00f6ff",
         dimWhite: "rgba(255, 255, 255, 0.7)",
         dimBlue: "rgba(9, 151, 124, 0.1)",
+        link: "#1CCEFF"
       },
       fontFamily: {
         heading_one: ["Poppins", "sans-serif"],

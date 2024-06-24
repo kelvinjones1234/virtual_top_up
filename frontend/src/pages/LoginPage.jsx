@@ -14,13 +14,20 @@ const LoginPage = () => {
   const { loginUser } = useContext(AuthContext);
 
   return (
-    <div className="bg-primary min-h-screen min-w-[150px] bg-opacity-[95%] z-[-1] font-body_two">
+    <div className="min-w-[150px] bg-opacity-[95%] z-[-1] font-body_two">
       <div className="authentication bg-bg_one bg-contain md:bg-cover bg-center w-full min-h-screen bg-no-repeat">
         <div className="authenticationnavbar flex justify-between p-4 lg:px-[6rem]">
-          <div className="logo text-white">Atom</div>
+          <div className="left flex items-center gap-1 ">
+            <div className="logo text-link border text-[.7rem] px-2 border-white rounded-[.5rem] font-bold">
+              <Link to={"/"}>Atom</Link>
+            </div>
+            <div className="h-3 w-3 bg-link rounded-full"></div>
+            <div className="h-2 w-2 bg-link rounded-full"></div>
+            <div className="h-1 w-1 bg-link rounded-full"></div>
+          </div>
           <div className="hidden ss:block text-gray-300">
             Don't have an account?
-            <span className="text-[#1CCEFF] font-bold cursor-pointer hover:text-sky-500 transition duration-450 ease-in-out">
+            <span className="text-link font-bold cursor-pointer hover:text-sky-400 transition duration-450 ease-in-out">
               <Link to="/authentication/register"> Get started</Link>
             </span>
           </div>
@@ -47,7 +54,7 @@ const LoginPage = () => {
                 placeholder="Username"
                 aria-label="Username"
                 autoComplete="username"
-                className="transition duration-450 ease-in-out my-2 w-full text-white py-1 px-4 h-[3.5rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-700 hover:border-black focus:border-[#1CCEFF] bg-opacity-80"
+                className="transition duration-450 ease-in-out my-2 w-full text-white py-1 px-4 h-[3.5rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-700 hover:border-black focus:border-link bg-opacity-80"
               />
             </div>
             <div>
@@ -57,7 +64,7 @@ const LoginPage = () => {
                 placeholder="Password"
                 aria-label="Password"
                 autoComplete="current-password"
-                className="transition duration-450 ease-in-out my-2 w-full text-white py-1 px-4 h-[3.5rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-700 hover:border-black focus:border-[#1CCEFF] bg-opacity-80"
+                className="transition duration-450 ease-in-out my-2 w-full text-white py-1 px-4 h-[3.5rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-700 hover:border-black focus:border-link bg-opacity-80"
               />
             </div>
             <div className="flex flex-wrap w-full text-white justify-between text-[1rem] text-gray-300 py-5">
@@ -65,13 +72,13 @@ const LoginPage = () => {
                 <input type="checkbox" className="h-4 w-4 md:h-5 md:w-5 mr-3" />
                 <label>Remember me</label>
               </div>
-              <p className="text-[#1CCEFF] font-semibold cursor-pointer">
+              <p className="text-link hover:text-sky-400 font-semibold cursor-pointer">
                 Forgot password?
               </p>
             </div>
             <div>
               <button
-                className="text-[1rem] my-2 w-full outline-none text-white p-1 h-[3.2rem] bg-[#1CCEFF] text-black rounded-2xl bg-opacity-[90%] font-semibold hover:bg-sky-500 transition duration-450 ease-in-out"
+                className="text-[1rem] my-2 w-full outline-none text-white p-1 h-[3.2rem] bg-link text-black rounded-2xl bg-opacity-[90%] font-semibold hover:bg-sky-400 transition duration-450 ease-in-out"
                 type="submit"
               >
                 Login
@@ -80,7 +87,7 @@ const LoginPage = () => {
             <div className="text-center text-[1rem] text-gray-300 py-4 ss:hidden">
               <p>
                 Don't have an account?{" "}
-                <span className="text-[#1CCEFF] font-semibold cursor-pointer">
+                <span className="text-link font-semibold cursor-pointer">
                   <Link to={"/authentication/register"}>Get started</Link>
                 </span>
               </p>

@@ -20,53 +20,61 @@ function App() {
       <AuthProvider>
         <ProductProvider>
           <WalletProvider>
-            <Routes>
-              <Route element={<HomePage />} path="/" />
-              <Route element={<LoginPage />} path="/authentication/login" />
-              <Route
-                element={<RegisterationPage />}
-                path="/authentication/register"
-              />
-              <Route element={<PrivateRoute />}>
-                <Route element={<UserDashboardPage />} path="/user/dashboard" />
-              </Route>
-              <Route element={<PrivateRoute />}>
+            <div>
+              <div
+                className={`bg-custom-gradient w-full z-[-2] min-w-[150px] fixed top-0 left-0 min-h-screen`}
+              ></div>
+              <Routes>
+                <Route element={<HomePage />} path="/" />
+                <Route element={<LoginPage />} path="/authentication/login" />
                 <Route
-                  element={<DataPage />}
-                  path="/user/dashboard/services/data"
+                  element={<RegisterationPage />}
+                  path="/authentication/register"
                 />
-              </Route>
-              <Route element={<PrivateRoute />}>
-                <Route
-                  element={<AirtimePage />}
-                  path="/user/dashboard/services/airtime"
-                />
-              </Route>
-              <Route element={<PrivateRoute />}>
-                <Route
-                  element={<CableSubPage />}
-                  path="/user/dashboard/services/cable subscription"
-                />
-              </Route>
-              <Route element={<PrivateRoute />}>
-                <Route
-                  element={<ElectricityBillPage />}
-                  path="/user/dashboard/services/electricity bill"
-                />
-              </Route>
-              <Route element={<PrivateRoute />}>
-                <Route
-                  element={<ProfilePage />}
-                  path="/user/dashboard/profile"
-                />
-              </Route>
-              <Route element={<PrivateRoute />}>
-                <Route
-                  element={<TransactionHistoryPage />}
-                  path="/user/dashboard/transactions"
-                />
-              </Route>
-            </Routes>
+                <Route element={<PrivateRoute />}>
+                  <Route
+                    element={<UserDashboardPage />}
+                    path="/user/dashboard"
+                  />
+                </Route>
+                <Route element={<PrivateRoute />}>
+                  <Route
+                    element={<DataPage />}
+                    path="/user/dashboard/services/data"
+                  />
+                </Route>
+                <Route element={<PrivateRoute />}>
+                  <Route
+                    element={<AirtimePage />}
+                    path="/user/dashboard/services/airtime"
+                  />
+                </Route>
+                <Route element={<PrivateRoute />}>
+                  <Route
+                    element={<CableSubPage />}
+                    path="/user/dashboard/services/cable subscription"
+                  />
+                </Route>
+                <Route element={<PrivateRoute />}>
+                  <Route
+                    element={<ElectricityBillPage />}
+                    path="/user/dashboard/services/electricity bill"
+                  />
+                </Route>
+                <Route element={<PrivateRoute />}>
+                  <Route
+                    element={<ProfilePage />}
+                    path="/user/dashboard/profile"
+                  />
+                </Route>
+                <Route element={<PrivateRoute />}>
+                  <Route
+                    element={<TransactionHistoryPage />}
+                    path="/user/dashboard/transactions"
+                  />
+                </Route>
+              </Routes>
+            </div>
           </WalletProvider>
         </ProductProvider>
       </AuthProvider>

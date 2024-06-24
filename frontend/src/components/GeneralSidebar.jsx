@@ -7,6 +7,7 @@ import { Link } from "react-router-dom";
 import transfer from "../assets/transfer.svg";
 import dashboard from "../assets/dashboard.svg";
 import services from "../assets/services.svg";
+import transactions from "../assets/transactions.svg";
 import price_list from "../assets/price_list.svg";
 import logout from "../assets/logout.svg";
 import { ProductContext } from "../context/ProductContext";
@@ -149,6 +150,21 @@ const GeneralSidebar = ({
                 </div>
               </ul>
             </ul>
+            <li
+              className={`mt-4 items-center py-3 px-2 rounded-xl ${
+                activePath === "/user/dashboard/transactions" &&
+                "bg-white bg-opacity-20"
+              }`}
+            >
+              <Link to={"/user/dashboard/transactions"} className="flex">
+                <img
+                  src={transactions}
+                  alt=""
+                  className="h-[1.2rem] w-[1.1rem] ml-[.2rem] mr-[1rem]"
+                />
+                <div>Transactions</div>
+              </Link>
+            </li>
             <li className="mt-4 items-center flex  py-3 px-2 rounded-xl">
               <img
                 src={price_list}

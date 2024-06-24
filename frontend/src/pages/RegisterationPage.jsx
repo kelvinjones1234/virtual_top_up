@@ -11,7 +11,7 @@ const LeftSide = () => (
 );
 
 const inputStyle =
-  "transition duration-450 ease-in-out my-2 w-full text-white py-1 px-4 h-[3.5rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-800 hover:border-black focus:border-[#1CCEFF] bg-opacity-80";
+  "transition duration-450 ease-in-out my-2 w-full text-white py-1 px-4 h-[3.5rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-800 hover:border-black focus:border-link bg-opacity-80";
 
 const RegisterationPage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -33,19 +33,24 @@ const RegisterationPage = () => {
   }, []);
 
   return (
-    <div className="bg-primary min-h-screen min-w-[150px] bg-opacity-[95%] z-[-1] font-body_two">
+    <div className="min-w-[150px] bg-opacity-[95%] z-[-1] font-body_two">
       <div className="authentication bg-bg_one bg-contain md:bg-cover bg-center w-full min-h-screen bg-no-repeat">
         <div
           className={`authenticationnavbar flex justify-between p-4 md:px-[6rem] fixed top-0 w-full transition-colors duration-200 ${
             isScrolled ? "bg-opacity-100 bg-gray-900" : "bg-transparent"
           }`}
         >
-          <div className="left logo">
-            <div className="logo text-white">Atom</div>
+          <div className="left flex items-center gap-1 ">
+            <div className="logo text-link border text-[.7rem] px-2 border-white rounded-[.5rem] font-bold">
+              <Link to={"/"}>Atom</Link>
+            </div>
+            <div className="h-3 w-3 bg-link rounded-full"></div>
+            <div className="h-2 w-2 bg-link rounded-full"></div>
+            <div className="h-1 w-1 bg-link rounded-full"></div>
           </div>
           <div className="right hidden ss:block text-gray-300">
             Already have an account?
-            <span className="text-[#1CCEFF] font-bold cursor-pointer hover:text-sky-500 transition duration-450 ease-in-out">
+            <span className="text-link font-bold cursor-pointer hover:text-sky-500 transition duration-450 ease-in-out">
               <Link to="/authentication/login"> Login</Link>
             </span>
           </div>
@@ -123,13 +128,13 @@ const RegisterationPage = () => {
                   />
                   <div className="mr-6">Remember me</div>
                 </div>
-                <p className="right text-[#1CCEFF] font-semibold cursor-pointer hover:text-sky-500 transition duration-450 ease-in-out">
+                <p className="right text-link font-semibold cursor-pointer hover:text-sky-500 transition duration-450 ease-in-out">
                   Forgot password?
                 </p>
               </div>
               <div className="ss:pb-16">
                 <button
-                  className="my-2 w-full p-1 h-[3.2rem] bg-[#1CCEFF] text-black rounded-2xl bg-opacity-90 font-semibold hover:bg-sky-500 transition duration-450 ease-in-out"
+                  className="my-2 w-full p-1 h-[3.2rem] bg-link text-black rounded-2xl bg-opacity-90 font-semibold hover:bg-sky-500 transition duration-450 ease-in-out"
                   type="submit"
                 >
                   Register
@@ -139,7 +144,7 @@ const RegisterationPage = () => {
             <div className="text-center text-[1rem] text-gray-300 pt-4 pb-[6rem] ss:hidden">
               <p>
                 Already have an account?{" "}
-                <span className="text-[#1CCEFF] font-semibold cursor-pointer hover:text-sky-500 transition duration-450 ease-in-out">
+                <span className="text-link font-semibold cursor-pointer hover:text-sky-500 transition duration-450 ease-in-out">
                   <Link to={"/authentication/login"}>Login</Link>
                 </span>
               </p>

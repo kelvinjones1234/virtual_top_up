@@ -6,33 +6,36 @@ import GeneralRight from "./GeneralRight";
 import { Link } from "react-router-dom";
 import { ProductContext } from "../context/ProductContext";
 import { useWallet } from "../context/WalletContext";
+import { FaAngleRight } from "react-icons/fa6";
 
 const UserDashBoard = () => {
   const { productData } = useContext(ProductContext);
   const { walletData } = useWallet();
 
   return (
-    <div className="bg-bg_on h-auto bg-contain bg-no-repeat mt-[20vh] sm:bg-cover bg-center px-4 ss:px-[5rem] sm:px-[1rem] sm:flex gap-5 md:gap-12 justify-center lg:mx-[5rem] font-body_two">
+    <div className="mt-[20vh] sm:bg-cover bg-center px-4 ss:px-[5rem] sm:px-[1rem] sm:flex gap-5 md:gap-12 justify-center lg:mx-[5rem] font-body_two">
       {/* left layer */}
       <GeneralLeft />
 
       {/* middle layer */}
 
-      <div className="flex flex-col justify-center">
-        <div className="rounded-[1rem] bg-primary p-4 xs:p-8 text-white shadow-lg shadow-indigo-900/10 text-[.8rem]">
+      <div className="flex flex-col justify-center text-[.8rem] md:text-[1rem]">
+        <div className="rounded-[1rem] bg-primary p-4 xs:p-8 text-white shadow-lg shadow-indigo-900/10">
           <div className="flex justify-between items-center">
             <p className="pb-6">Available Balance</p>
             <Link to={"/user/dashboard/transactions"}>
-              <div className="flex cursor-pointer">
-                <p className="mb-6 mr-3">Transaction History </p>
-                <img src={right_arrow} alt="" className="h-[1.2rem]" />
+              <div className="flex gap-3 cursor-pointer items-center mb-6 hover:text-sky-400 transition-all duration-400 ease-in-out">
+                <p className="">Transaction History </p>
+                <FaAngleRight className="h-[.9rem] mt-[0.08]" />
               </div>
             </Link>
           </div>
           <div className="flex justify-between items-center">
-            <p>₦ {walletData && walletData.balance}</p>
+            <p className="text-[1.5rem] font-bold">
+              ₦ {walletData && walletData.balance}
+            </p>
             <div className="button flex items-center">
-              <div className="bg-[#1CCEFF] text-primary rounded-[2rem] pb-[.3rem] pt-[.4rem] px-[.9rem] font-bold cursor-pointer">
+              <div className="bg-link text-primary rounded-[2rem] pb-[.3rem] pt-[.4rem] px-[.9rem] font-bold cursor-pointer">
                 + Fund Wallet
               </div>
             </div>

@@ -5,6 +5,8 @@ import price_list from "../assets/price_list.svg";
 import logout from "../assets/logout.svg";
 import services from "../assets/services.svg";
 import right_arrow from "../assets/right_arrow.svg";
+import transactions from "../assets/transactions.svg";
+
 import bottom_arrow from "../assets/bottom_arrow.svg";
 import Transfer from "./Transfer";
 
@@ -39,7 +41,7 @@ const GeneralLeft = () => {
   };
 
   return (
-    <div className="w-[25rem] h-[calc(100vh-25vh)] hidden pr-5 sm:block overflow-y-auto sticky top-[15vh] self-start font-body_two custom-scrollbar">
+    <div className="w-[25rem] min-w-[175.38px] h-[calc(100vh-25vh)] hidden pr-5 sm:block overflow-y-auto sticky top-[15vh] self-start font-body_two custom-scrollbar">
       <div>
         <div
           className={`py-[.7rem] rounded-xl font-bold text-white px-4 mt-4 max-w-[13rem] sm:mt-0 ${
@@ -86,14 +88,14 @@ const GeneralLeft = () => {
             }`}
           >
             <div
-              className="flex items-center relative cursor-pointer"
+              className="flex items-center relative gap-5 cursor-pointer"
               onClick={handleServicesDropDowns}
             >
               <div className="flex items-center gap-3">
                 <img src={services} alt="" className="w-4" />
                 <div className="">Services</div>
               </div>
-              <div className="ml-[2rem]">
+              <div className="">
                 <img
                   src={servicesDropDown ? bottom_arrow : right_arrow}
                   alt=""
@@ -101,6 +103,18 @@ const GeneralLeft = () => {
                 />
               </div>
             </div>
+          </div>
+          <div
+            className={`py-[.7rem] gap-3 rounded-xl max-w-[13rem] flex items-center font-bold text-white px-4 mt-4 ${
+              activePath === "/user/dashboard/transactions"
+                ? "bg-white bg-opacity-20"
+                : "hover:bg-white hover:bg-opacity-5 transition duration-400 ease-in-out"
+            }`}
+          >
+            <img src={transactions} alt="" className="w-4" />
+            <Link to={"/user/dashboard/transactions"}>
+              <p className="cursor-pointer">Transactions</p>
+            </Link>
           </div>
           <div
             className={`dropdown transition-all max-w-[13rem] duration-400 ease-in-out overflow-hidden ${
