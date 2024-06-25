@@ -57,21 +57,12 @@ const HomePageNavbar = ({ homeMenuToggle, setHomeMenuToggle }) => {
               </button>
             </div>
             <div className="hamburger">
-              {homeMenuToggle ? (
-                <img
-                  src={close}
-                  alt="harmburger-menu"
-                  onClick={handleHomeMenuToggle}
-                  className="h-[20px] w-[20px]"
-                />
-              ) : (
-                <img
-                  src={menu}
-                  alt="harmburger-menu"
-                  onClick={handleHomeMenuToggle}
-                  className="h-[20px] w-[20px"
-                />
-              )}
+              <img
+                src={homeMenuToggle ? close : menu}
+                alt="harmburger-menu"
+                onClick={handleHomeMenuToggle}
+                className="h-[20px] w-[20px]"
+              />
             </div>
           </div>
           <div className="large-screen hidden lg:pr-[6rem]">
