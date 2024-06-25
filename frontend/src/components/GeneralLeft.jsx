@@ -40,6 +40,11 @@ const GeneralLeft = () => {
     }
   };
 
+  const handleDropDownClose = () => {
+    setservicesDropDown(false);
+    setTransferForm(false);
+  };
+
   return (
     <div className="w-[25rem] min-w-[175.38px] h-[calc(100vh-25vh)] hidden pr-5 sm:block overflow-y-auto sticky top-[15vh] self-start font-body_two custom-scrollbar">
       <div>
@@ -49,6 +54,7 @@ const GeneralLeft = () => {
               ? "bg-white bg-opacity-20"
               : "hover:bg-white hover:bg-opacity-5 transition duration-400 ease-in-out"
           }`}
+          onClick={handleDropDownClose}
         >
           <div className="cursor-pointer inline-flex items-center gap-3">
             <img src={dashboard} alt="" className="w-4" />
@@ -105,18 +111,6 @@ const GeneralLeft = () => {
             </div>
           </div>
           <div
-            className={`py-[.7rem] gap-3 rounded-xl max-w-[13rem] flex items-center font-bold text-white px-4 mt-4 ${
-              activePath === "/user/dashboard/transactions"
-                ? "bg-white bg-opacity-20"
-                : "hover:bg-white hover:bg-opacity-5 transition duration-400 ease-in-out"
-            }`}
-          >
-            <img src={transactions} alt="" className="w-4" />
-            <Link to={"/user/dashboard/transactions"}>
-              <p className="cursor-pointer">Transactions</p>
-            </Link>
-          </div>
-          <div
             className={`dropdown transition-all max-w-[13rem] duration-400 ease-in-out overflow-hidden ${
               servicesDropDown ? "block" : "hidden"
             }`}
@@ -139,10 +133,24 @@ const GeneralLeft = () => {
         </div>
         <div
           className={`py-[.7rem] gap-3 rounded-xl max-w-[13rem] flex items-center font-bold text-white px-4 mt-4 ${
+            activePath === "/user/dashboard/transactions"
+              ? "bg-white bg-opacity-20"
+              : "hover:bg-white hover:bg-opacity-5 transition duration-400 ease-in-out"
+          }`}
+          onClick={handleDropDownClose}
+        >
+          <img src={transactions} alt="" className="w-4" />
+          <Link to={"/user/dashboard/transactions"}>
+            <p className="cursor-pointer">Transactions</p>
+          </Link>
+        </div>
+        <div
+          className={`py-[.7rem] gap-3 rounded-xl max-w-[13rem] flex items-center font-bold text-white px-4 mt-4 ${
             activePath === "/user/price-list"
               ? "bg-white bg-opacity-20"
               : "hover:bg-white hover:bg-opacity-5 transition duration-400 ease-in-out"
           }`}
+          onClick={handleDropDownClose}
         >
           <img src={price_list} alt="" className="w-4" />
           <Link to={"/user/price-list"}>

@@ -3,7 +3,7 @@ import { AuthContext } from "../context/AuthenticationContext";
 import { Link } from "react-router-dom";
 
 const LeftSide = () => (
-  <div className="left leading-[3rem] relative hidden justify-center items-center sm:flex h-[363.98px] shadow-lg shadow-indigo-900/20 bg-opacity-50 rounded-2xl w-[20rem] bg-black text-white">
+  <div className="left mt-[6.8rem] leading-[3rem] relative hidden justify-center items-center sm:flex h-[363.98px] shadow-lg shadow-indigo-900/20 bg-opacity-50 rounded-2xl w-[20rem] bg-black text-white">
     <div className="atom-logo text-[6vw] font-bold text-gradient absolute">
       Atom <br /> <span className="text-[1.5vw]">Virtual Top Up</span>
     </div>
@@ -16,14 +16,20 @@ const inputStyle =
 const RegisterationPage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { registerUser } = useContext(AuthContext);
+  const [formData, setFormData] = useState({
+    first_name: "",
+    last_name: "",
+    username: "",
+    email: "",
+    phone_number: "",
+    transaction_pin: "",
+    password: "",
+    confirm_password: "",
+  });
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 30) {
-        setIsScrolled(true);
-      } else {
-        setIsScrolled(false);
-      }
+      setIsScrolled(window.scrollY > 30);
     };
 
     window.addEventListener("scroll", handleScroll);
@@ -32,6 +38,18 @@ const RegisterationPage = () => {
     };
   }, []);
 
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData((prevData) => ({
+      ...prevData,
+      [name]: value,
+    }));
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    registerUser(formData);
+  };
   return (
     <div className="min-w-[150px] bg-opacity-[95%] z-[-1] font-body_two">
       <div className="authentication bg-bg_one bg-contain md:bg-cover bg-center w-full min-h-screen bg-no-repeat">
@@ -40,9 +58,9 @@ const RegisterationPage = () => {
             isScrolled ? "bg-opacity-100 bg-gray-900" : "bg-transparent"
           }`}
         >
-          <div className="left flex items-center gap-1 ">
+          <div className="left flex items-center gap-1">
             <div className="logo text-link border text-[.7rem] px-2 border-white rounded-[.5rem] font-bold">
-              <Link to={"/"}>Atom</Link>
+              <Link to="/">Atom</Link>
             </div>
             <div className="h-3 w-3 bg-link rounded-full"></div>
             <div className="h-2 w-2 bg-link rounded-full"></div>
@@ -67,56 +85,89 @@ const RegisterationPage = () => {
                 Create an Atom account for free
               </p>
             </div>
-            <form action="" onSubmit={registerUser}>
+            <form onSubmit={handleSubmit}>
               <div className="flex flex-wrap justify-between">
-                <div className="flex flex-col w-full">
+                <div className="w-full sm:w-[48%]">
                   <input
                     type="text"
-                    placeholder="Full Name"
-                    className={`${inputStyle}`}
-                    name="full_name"
+                    placeholder="First Name"
+                    className={inputStyle}
+                    name="first_name"
+                    value={formData.first_name}
+                    onChange={handleChange}
                   />
                 </div>
-                <div className="flex flex-col w-full sm:w-[48%]">
+                <div className="w-full sm:w-[48%]">
+                  <input
+                    type="text"
+                    placeholder="Last Name"
+                    className={inputStyle}
+                    name="last_name"
+                    value={formData.last_name}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="w-full sm:w-[48%]">
                   <input
                     type="text"
                     placeholder="Username"
-                    className={`${inputStyle}`}
+                    className={inputStyle}
                     name="username"
+                    value={formData.username}
+                    onChange={handleChange}
                   />
+                </div>
+                <div className="w-full sm:w-[48%]">
                   <input
                     type="text"
                     placeholder="Email address"
-                    className={`${inputStyle}`}
+                    className={inputStyle}
                     name="email"
+                    value={formData.email}
+                    onChange={handleChange}
                   />
                 </div>
-                <div className="flex flex-col w-full sm:w-[48%]">
+                <div className="w-full sm:w-[48%]">
                   <input
                     type="text"
                     placeholder="Phone Number"
-                    className={`${inputStyle}`}
+                    className={inputStyle}
                     name="phone_number"
-                  />
-                  <input
-                    type="text"
-                    placeholder="Transaction Pin"
-                    className={`${inputStyle}`}
-                    name="transaction_pin"
+                    value={formData.phone_number}
+                    onChange={handleChange}
                   />
                 </div>
-                <div className="flex flex-col sm:flex-row w-full sm:justify-between">
+                <div className="w-full sm:w-[48%]">
+                  <input
+                    type="password"
+                    placeholder="Transaction Pin"
+                    className={inputStyle}
+                    name="transaction_pin"
+                    autoComplete="current-password"
+                    value={formData.transaction_pin}
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className="w-full sm:w-[48%]">
                   <input
                     type="password"
                     placeholder="Password"
-                    className={`${inputStyle} sm:w-[48%]`}
+                    className={inputStyle}
                     name="password"
+                    value={formData.password}
+                    autoComplete="current-password"
+                    onChange={handleChange}
                   />
+                </div>
+                <div className="w-full sm:w-[48%]">
                   <input
                     type="password"
                     placeholder="Confirm Password"
-                    className={`${inputStyle} sm:w-[48%]`}
+                    className={inputStyle}
                     name="confirm_password"
+                    autoComplete="current-password"
+                    value={formData.confirm_password}
+                    onChange={handleChange}
                   />
                 </div>
               </div>
@@ -145,7 +196,7 @@ const RegisterationPage = () => {
               <p>
                 Already have an account?{" "}
                 <span className="text-link font-semibold cursor-pointer hover:text-sky-500 transition duration-450 ease-in-out">
-                  <Link to={"/authentication/login"}>Login</Link>
+                  <Link to="/authentication/login">Login</Link>
                 </span>
               </p>
             </div>

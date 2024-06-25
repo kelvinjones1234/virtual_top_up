@@ -1,11 +1,12 @@
 import { createContext, useState, useEffect } from "react";
 import axios from "axios";
-import { jwtDecode } from "jwt-decode"; // Correct import statement
+import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
+  const [userError, setUserError] = useState("");
   const navigate = useNavigate();
 
   const [authTokens, setAuthTokens] = useState(
@@ -29,14 +30,13 @@ const AuthProvider = ({ children }) => {
     return () => clearInterval(interval);
   }, [authTokens]);
 
-  const loginUser = async (e) => {
-    e.preventDefault();
+  const loginUser = async (username, password) => {
     try {
       const response = await axios.post(
         "http://127.0.0.1:8000/api/token/",
         {
-          username: e.target.username.value,
-          password: e.target.password.value,
+          username: username,
+          password: password,
         },
         {
           headers: {
@@ -56,27 +56,20 @@ const AuthProvider = ({ children }) => {
         alert("Something went wrong!");
       }
     } catch (error) {
+      setUserError(error.response.data.detail);
+
       console.error(
         "Error:",
-        error.response ? error.response.data : error.message
+        error.response ? error.response.data.detail : error.message
       );
     }
   };
 
-  const registerUser = async (e) => {
-    e.preventDefault();
+  const registerUser = async (formData) => {
     try {
       const response = await axios.post(
         "http://127.0.0.1:8000/api/authentication/register/",
-        {
-          username: e.target.username.value,
-          full_name: e.target.full_name.value,
-          phone_number: e.target.phone_number.value,
-          email: e.target.email.value,
-          transaction_pin: e.target.transaction_pin.value,
-          password: e.target.password.value,
-          confirm_password: e.target.confirm_password.value,
-        },
+        formData,
         {
           headers: {
             "Content-Type": "application/json",
@@ -84,7 +77,6 @@ const AuthProvider = ({ children }) => {
         }
       );
 
-      const data = response.data;
       if (response.status === 201) {
         navigate("/authentication/login");
       } else {
@@ -135,11 +127,13 @@ const AuthProvider = ({ children }) => {
   };
 
   const contextData = {
-    loginUser: loginUser,
-    logoutUser: logoutUser,
-    registerUser: registerUser,
-    user: user,
-    authTokens: authTokens,
+    loginUser,
+    logoutUser,
+    registerUser,
+    user,
+    userError,
+    setUserError,
+    authTokens,
   };
 
   return (

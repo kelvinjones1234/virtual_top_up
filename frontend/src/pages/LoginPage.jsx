@@ -1,4 +1,4 @@
-import { useContext, React } from "react";
+import { useContext, React, useState, useEffect } from "react";
 import { AuthContext } from "../context/AuthenticationContext";
 import { Link } from "react-router-dom";
 
@@ -11,7 +11,47 @@ const LeftSide = () => (
 );
 
 const LoginPage = () => {
-  const { loginUser } = useContext(AuthContext);
+  const { loginUser, userError, setUserError } = useContext(AuthContext);
+  const [username, setUsername] = useState("");
+  const [password, setPassword] = useState("");
+
+  // validate login input
+  const [errorMessage, setErrorMessage] = useState({});
+
+  const login = (e) => {
+    e.preventDefault();
+    if (validInputs()) {
+      loginUser(username, password);
+    }
+  };
+
+  useEffect(() => {
+    if (userError) {
+      setErrorMessage((prev) => ({
+        ...prev,
+        anonymousError:
+          "Incorrect login details. Password and username are case sensitive.",
+      }));
+    }
+  }, [userError]);
+
+  useEffect(() => {
+    if (errorMessage.anonymousError) {
+      setUserError("");
+    }
+  }, [errorMessage.anonymousError, setUserError]);
+
+  const validInputs = () => {
+    const newError = {};
+    if (!username) {
+      newError.usernameError = "Please fill in your username";
+    }
+    if (!password) {
+      newError.passwordError = "Please fill in your password";
+    }
+    setErrorMessage(newError);
+    return Object.keys(newError).length === 0;
+  };
 
   return (
     <div className="min-w-[150px] bg-opacity-[95%] z-[-1] font-body_two">
@@ -32,9 +72,8 @@ const LoginPage = () => {
             </span>
           </div>
         </div>
-
         <form
-          onSubmit={loginUser}
+          onSubmit={login}
           className="font-poppins mt-[15vh] sm:flex justify-between login mx-auto px-4 w-full md:px-[4rem] lg:px-[8rem]"
         >
           <LeftSide />
@@ -47,25 +86,42 @@ const LoginPage = () => {
                 Enter your details below
               </p>
             </div>
+            {errorMessage.anonymousError && (
+              <div className="text-white ">
+                <p>
+                  Incorrect login details.
+                  <br /> Password and username are case sensitive.
+                </p>
+              </div>
+            )}
             <div>
               <input
                 type="text"
-                name="username"
+                value={username}
                 placeholder="Username"
                 aria-label="Username"
-                autoComplete="username"
+                onChange={(e) => setUsername(e.target.value)}
                 className="transition duration-450 ease-in-out my-2 w-full text-white py-1 px-4 h-[3.5rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-700 hover:border-black focus:border-link bg-opacity-80"
               />
+              {errorMessage.usernameError && (
+                <div className="text-white mb-3 ">
+                  {errorMessage.usernameError}
+                </div>
+              )}
             </div>
             <div>
               <input
                 type="password"
-                name="password"
                 placeholder="Password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 aria-label="Password"
                 autoComplete="current-password"
                 className="transition duration-450 ease-in-out my-2 w-full text-white py-1 px-4 h-[3.5rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-700 hover:border-black focus:border-link bg-opacity-80"
               />
+              {errorMessage.passwordError && (
+                <div className="text-white">{errorMessage.passwordError}</div>
+              )}
             </div>
             <div className="flex flex-wrap w-full text-white justify-between text-[1rem] text-gray-300 py-5">
               <div className="flex items-center">

@@ -57,13 +57,13 @@ const GeneralNavbar = () => {
           <div className="left flex gap-6 items-center">
             <div className="flex items-center gap-1">
               <Link to={"/"}>
-                <div className="logo bg-black font-heading_one text-link border px-2 text-[.7rem] px-2 border-white rounded-[.5rem] font-bold">
+                <div className="logo font-heading_one text-green-500 border border-green-500 px-2 text-[.7rem] px-2 border-white rounded-[.5rem] font-bold">
                   Atom
                 </div>
               </Link>
-              <div className="h-3 w-3 bg-link rounded-full"></div>
-              <div className="h-2 w-2 bg-link rounded-full"></div>
-              <div className="h-1 w-1 bg-link rounded-full"></div>
+              <div className="h-3 w-3 bg-green-500 rounded-full"></div>
+              <div className="h-2 w-2 bg-green-500 rounded-full"></div>
+              <div className="h-1 w-1 bg-green-500 rounded-full"></div>
             </div>
             <div className="text-white font-bold">
               Hi, {user.first_name.toUpperCase()}

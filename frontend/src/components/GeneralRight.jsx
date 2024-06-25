@@ -7,7 +7,7 @@ const GeneralRight = () => {
   return (
     <div className="w-[25rem] z-[] hidden sm:block sticky top-[15vh] self-start font-body_two">
       <div>
-        <h1 className="text-white font-bold mb-[2rem] font-heading_two">
+        <h1 className="text-white underline font-bold mb-[2rem] font-heading_two">
           Profile
         </h1>
         <div className="flex justify-center">

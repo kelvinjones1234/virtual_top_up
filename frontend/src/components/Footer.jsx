@@ -11,7 +11,7 @@ const socials = [
 
 const Footer = () => {
 	return (
-		<div className="text-center mt-16 border-t w-full mx-auto text-white font-body_two ss:px-20 px-4">
+		<div className="text-center mt-10 border-t w-full mx-auto text-white font-body_two ss:px-20 px-4">
 			<div className="sm:flex sm:justify-between max-w-[1000px] mx-auto">
 				<div className="legals sm:mt-16 sm:mx-3">
 					<h3 className="text-white font-heading_two py-4 text-2xl font-bold">
