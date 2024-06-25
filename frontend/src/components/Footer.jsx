@@ -14,21 +14,21 @@ const Footer = () => {
     <div className="text-center mt-10 border-t border-green-600 w-full mx-auto text-white font-body_two ss:px-20 px-4">
       <div className="sm:flex sm:justify-between max-w-[1000px] mx-auto">
         <div className="legals sm:mt-16 sm:mx-3">
-          <h3 className="text-white font-heading_two py-4 text-2xl font-bold">
+          <h3 className="text-green-500 font-heading_two pt-4 text-2xl font-bold">
             Legals
           </h3>
           <p>Terms and Condition</p>
           <p>Privacy Policy</p>
         </div>
         <div className="contact mt-16">
-          <h3 className="text-white font-heading_two py-4 text-2xl font-bold">
+          <h3 className="text-green-500 font-heading_two pt-4 text-2xl font-bold">
             Contact
           </h3>
           <p>atom@atom.com</p>
           <p className="tell">+234 814 177 1672</p>
         </div>
         <div className="socials my-16">
-          <h3 className="text-white font-heading_two py-4 text-2xl font-bold">
+          <h3 className="text-green-500 font-heading_two pt-4 text-2xl font-bold">
             Socials
           </h3>
           <div className="icons flex justify-center">

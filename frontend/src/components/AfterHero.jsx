@@ -9,7 +9,7 @@ const AfterHero = () => {
   return (
     <div className="px-[1rem] ss:px-[6rem] mb-[8vh] mt-[2vh] font-body_two">
       <div className="image flex justify-center">
-        <h1 className="text-white py-4 sm:pb-8 text-[1.2rem] font-bold font-heading_two">
+        <h1 className="text-green-500 py-4 sm:pb-8 text-[1.2rem] font-bold font-heading_two">
           Why Choose Atom?
         </h1>
       </div>
