@@ -24,7 +24,7 @@ const UserDashBoard = () => {
           <div className="flex justify-between items-center">
             <p className="pb-6">Available Balance</p>
             <Link to={"/user/dashboard/transactions"}>
-              <div className="flex gap-3 cursor-pointer items-center mb-6 hover:text-sky-400 transition-all duration-400 ease-in-out">
+              <div className="flex gap-3 cursor-pointer items-center mb-6 hover:text-sky-300 transition-all duration-400 ease-in-out">
                 <p className="">Transaction History </p>
                 <FaAngleRight className="h-[.9rem] mt-[0.08]" />
               </div>
@@ -47,7 +47,7 @@ const UserDashBoard = () => {
             atom credit to other users with their phone number.
           </p>
           <div className="button flex items-center justify-between pt-4">
-            <div className="bg-white cursor-pointer hover:bg-gray-200 transiton duration-500 ease-in-out text-primary rounded-[2rem] pb-[.3rem] pt-[.4rem] px-[.9rem] font-bold">
+            <div className="bg-green-500 cursor-pointer hover:bg-green-600 transiton duration-500 ease-in-out text-primary rounded-[2rem] pb-[.3rem] pt-[.4rem] px-[.9rem] font-bold">
               Create Shortcut
             </div>
             <div className="text-white border border-green-500 hover:text-green-600 transiton duration-500 ease-in-out cursor-pointer rounded-[2rem] pb-[.3rem] pt-[.4rem] px-[.9rem] font-bold">

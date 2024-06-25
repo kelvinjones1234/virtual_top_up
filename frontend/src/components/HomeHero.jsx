@@ -40,14 +40,14 @@ const HomeHero = () => {
       <div className="buttons flex sm:justify-start justify-center mb-[12vh] mt-[5vh] font-body_two">
         <div className="login">
           <Link to={`${user ? "/user/dashboard" : "/authentication/login"}`}>
-            <button className="border rounded-xl py-[.4rem] text-[#1CCEFF] mx-4 px-6">
+            <button className="border border-green-500 rounded-2xl py-[.4rem] hover:text-green-600 transition-all duration-500 ease-in-out text-white mx-4 px-6">
               Login
             </button>
           </Link>
         </div>
         <div className="register">
           <Link to={`${user ? "/user/dashboard" : "/authentication/register"}`}>
-            <button className="bg-[#1CCEFF] rounded-xl py-[.4rem] mx-4 px-6">
+            <button className="bg-green-500 rounded-2xl hover:bg-green-600 py-[.4rem] transition duration-500 ease-in-out mx-4 px-6">
               Register
             </button>
           </Link>

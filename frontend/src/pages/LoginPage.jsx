@@ -57,13 +57,15 @@ const LoginPage = () => {
     <div className="min-w-[150px] bg-opacity-[95%] z-[-1] font-body_two">
       <div className="authentication bg-bg_one bg-contain md:bg-cover bg-center w-full min-h-screen bg-no-repeat">
         <div className="authenticationnavbar flex justify-between p-4 lg:px-[6rem]">
-          <div className="left flex items-center gap-1 ">
-            <div className="logo text-link border text-[.7rem] px-2 border-white rounded-[.5rem] font-bold">
-              <Link to={"/"}>Atom</Link>
-            </div>
-            <div className="h-3 w-3 bg-link rounded-full"></div>
-            <div className="h-2 w-2 bg-link rounded-full"></div>
-            <div className="h-1 w-1 bg-link rounded-full"></div>
+          <div className="left flex items-center gap-1">
+            <Link to={"/"}>
+              <div className="logo font-heading_one text-green-500 border border-green-500 px-2 text-[.7rem] px-2 border-white rounded-[.5rem] font-bold">
+                Atom
+              </div>
+            </Link>
+            <div className="h-3 w-3 bg-green-500 rounded-full"></div>
+            <div className="h-3 w-3 bg-green-500 rounded-full"></div>
+            <div className="h-3 w-3 bg-green-500 rounded-full"></div>
           </div>
           <div className="hidden ss:block text-gray-300">
             Don't have an account?

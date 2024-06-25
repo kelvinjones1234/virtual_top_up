@@ -62,8 +62,8 @@ const GeneralNavbar = () => {
                 </div>
               </Link>
               <div className="h-3 w-3 bg-green-500 rounded-full"></div>
-              <div className="h-2 w-2 bg-green-500 rounded-full"></div>
-              <div className="h-1 w-1 bg-green-500 rounded-full"></div>
+              <div className="h-3 w-3 bg-green-500 rounded-full"></div>
+              <div className="h-3 w-3 bg-green-500 rounded-full"></div>
             </div>
             <div className="text-white font-bold">
               Hi, {user.first_name.toUpperCase()}

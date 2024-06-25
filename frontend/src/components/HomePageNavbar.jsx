@@ -41,37 +41,30 @@ const HomePageNavbar = ({ homeMenuToggle, setHomeMenuToggle }) => {
           isScrolled ? "bg-opacity-100 bg-gray-900" : "bg-transparent"
         }`}
       >
-        <div className="left flex items-center gap-1 ">
-          <div className="logo text-link border text-[.7rem] px-2 border-white rounded-[.5rem] font-bold">
-            <Link to={"/"}>Atom</Link>
-          </div>
-          <div className="h-3 w-3 bg-link rounded-full"></div>
-          <div className="h-2 w-2 bg-link rounded-full"></div>
-          <div className="h-1 w-1 bg-link rounded-full"></div>
+        <div className="flex items-center gap-1">
+          <Link to={"/"}>
+            <div className="logo font-heading_one text-green-500 border border-green-500 px-2 text-[.7rem] px-2 border-white rounded-[.5rem] font-bold">
+              Atom
+            </div>
+          </Link>
+          <div className="h-3 w-3 bg-green-500 rounded-full"></div>
+          <div className="h-3 w-3 bg-green-500 rounded-full"></div>
+          <div className="h-3 w-3 bg-green-500 rounded-full"></div>
         </div>
         <div className="right">
           <div className={`small-screen flex items-center sm:hidden`}>
             <div className="get-started">
-              <button className="bg-link py-[.4rem] mr-9 px-4 text-[.9rem] rounded-xl font-[500]">
+              <button className="bg-geen-500 py-[.4rem] mr-9 px-4 text-[1.1rem] hover:text-sky-500 text-link rounded-2xl font-bold">
                 <Link to={"/authentication/register"}>Get Started</Link>
               </button>
             </div>
             <div className="hamburger">
-              {homeMenuToggle ? (
-                <img
-                  src={close}
-                  alt="harmburger-menu"
-                  onClick={handleHomeMenuToggle}
-                  className="h-[20px] w-[20px]"
-                />
-              ) : (
-                <img
-                  src={menu}
-                  alt="harmburger-menu"
-                  onClick={handleHomeMenuToggle}
-                  className="h-[20px] w-[20px"
-                />
-              )}
+              <img
+                src={homeMenuToggle ? close : menu}
+                alt="harmburger-menu"
+                onClick={handleHomeMenuToggle}
+                className="h-[20px] w-[20px]"
+              />
             </div>
           </div>
           <div className="large-screen hidden lg:pr-[6rem]">
