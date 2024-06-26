@@ -9,7 +9,7 @@ const AfterHero = () => {
   return (
     <div className="px-[1rem] ss:px-[6rem] mb-[8vh] mt-[2vh] font-body_two">
       <div className="image flex justify-center">
-        <h1 className="text-green-500 py-4 sm:pb-8 text-[1.2rem] font-bold font-heading_two">
+        <h1 className="text-link py-4 sm:pb-8 text-[1.2rem] font-bold font-heading_two">
           Why Choose Atom?
         </h1>
       </div>
@@ -79,7 +79,7 @@ const AfterHero = () => {
       </div>
       <div className="contact-us text-center mt-[13vh] text-white">
         <div className="text mx-4">
-          <h3 className="text-white font-heading_two py-4 text-[1.2rem] font-bold">
+          <h3 className="text-white text-green-500 font-heading_two py-4 text-[1.2rem] font-bold">
             Have Questions?
           </h3>
           <p className="max-w-[450px] mx-auto">
@@ -88,7 +88,7 @@ const AfterHero = () => {
           </p>
         </div>
         <div className="contact-button p-3">
-          <button className="bg-green-500 hover:bg-green-600 transition duration-500 ease-in-out text-primary rounded-2xl py-[.4rem] px-6">
+          <button className="bg-link hover:bg-sky-500 transition duration-500 ease-in-out text-primary rounded-2xl py-[.4rem] px-6">
             Contact us
           </button>
         </div>

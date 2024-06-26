@@ -13,6 +13,7 @@ import ElectricityBillPage from "./pages/ElectricityBillPage";
 import ProfilePage from "./pages/ProfilePage";
 import TransactionHistoryPage from "./pages/TransactionHistoryPage";
 import { WalletProvider } from "./context/WalletContext";
+import FundWalletPage from "./pages/FundWalletPage";
 
 function App() {
   return (
@@ -71,6 +72,12 @@ function App() {
                   <Route
                     element={<TransactionHistoryPage />}
                     path="/user/dashboard/transactions"
+                  />
+                </Route>
+                <Route element={<PrivateRoute />}>
+                  <Route
+                    element={<FundWalletPage />}
+                    path="/user/dashboard/fund wallet"
                   />
                 </Route>
               </Routes>

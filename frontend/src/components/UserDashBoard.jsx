@@ -1,16 +1,24 @@
-import React, { useContext } from "react";
-import right_arrow from "../assets/right_arrow.svg";
-import { AuthContext } from "../context/AuthenticationContext";
+import React, { useContext, useState } from "react";
+import { Link } from "react-router-dom";
+import { FaAngleRight } from "react-icons/fa6";
 import GeneralLeft from "./GeneralLeft";
 import GeneralRight from "./GeneralRight";
-import { Link } from "react-router-dom";
 import { ProductContext } from "../context/ProductContext";
 import { useWallet } from "../context/WalletContext";
-import { FaAngleRight } from "react-icons/fa6";
+import FundWalletModal from "./FundWalletModal";
 
 const UserDashBoard = () => {
   const { productData } = useContext(ProductContext);
   const { walletData } = useWallet();
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleOpenModal = () => {
+    setIsModalOpen(true);
+  };
+
+  const handleCloseModal = () => {
+    setIsModalOpen(false);
+  };
 
   return (
     <div className="mt-[20vh] sm:bg-cover bg-center px-4 ss:px-[5rem] sm:px-[1rem] sm:flex gap-5 md:gap-12 justify-center lg:mx-[5rem] font-body_two">
@@ -18,16 +26,15 @@ const UserDashBoard = () => {
       <GeneralLeft />
 
       {/* middle layer */}
-
       <div className="flex flex-col justify-center text-[.8rem] md:text-[1rem]">
         <div className="rounded-[1rem] bg-primary p-4 xs:p-8 text-white shadow-lg shadow-indigo-900/10">
           <div className="flex justify-between items-center">
             <p className="pb-6">Available Balance</p>
             <Link to={"/user/dashboard/transactions"}>
-              <div className="flex gap-3 cursor-pointer items-center mb-6 hover:text-sky-300 transition-all duration-400 ease-in-out">
-                <p className="">Transaction History </p>
-                <FaAngleRight className="h-[.9rem] mt-[0.08]" />
-              </div>
+            <div className="flex gap-3 cursor-pointer items-center mb-6 hover:text-sky-300 transition-all duration-400 ease-in-out">
+              <p className="">Transaction History</p>
+              <FaAngleRight className="h-[.9rem] mt-[0.08]" />
+            </div>
             </Link>
           </div>
           <div className="flex justify-between items-center">
@@ -35,7 +42,10 @@ const UserDashBoard = () => {
               ₦ {walletData && walletData.balance}
             </p>
             <div className="button flex items-center">
-              <div className="bg-green-500 hover:bg-green-600 transition duration-400 ease-in-out text-primary rounded-[2rem] pb-[.3rem] pt-[.4rem] px-[.9rem] font-bold cursor-pointer">
+              <div
+                onClick={handleOpenModal}
+                className="bg-green-500 hover:bg-green-600 transition duration-400 ease-in-out text-primary rounded-[2rem] pb-[.3rem] pt-[.4rem] px-[.9rem] font-bold cursor-pointer"
+              >
                 + Fund Wallet
               </div>
             </div>
@@ -47,7 +57,7 @@ const UserDashBoard = () => {
             atom credit to other users with their phone number.
           </p>
           <div className="button flex items-center justify-between pt-4">
-            <div className="bg-green-500 cursor-pointer hover:bg-green-600 transiton duration-500 ease-in-out text-primary rounded-[2rem] pb-[.3rem] pt-[.4rem] px-[.9rem] font-bold">
+            <div className="bg-link cursor-pointer hover:bg-sky-500 transiton duration-500 ease-in-out text-primary rounded-[2rem] pb-[.3rem] pt-[.4rem] px-[.9rem] font-bold">
               Create Shortcut
             </div>
             <div className="text-white border border-green-500 hover:text-green-600 transiton duration-500 ease-in-out cursor-pointer rounded-[2rem] pb-[.3rem] pt-[.4rem] px-[.9rem] font-bold">
@@ -81,6 +91,10 @@ const UserDashBoard = () => {
         </div>
       </div>
       <GeneralRight />
+
+      {isModalOpen && (
+        <FundWalletModal onClose={handleCloseModal} />
+      )}
     </div>
   );
 };

@@ -18,9 +18,9 @@ const HomeHero = () => {
               Powering Your Connections
             </p>
             <div className="hidden sm:flex items-center">
-              <p className="h-7 w-12 bg-primary rounded-full ml-2 bg-opacity-80"></p>
-              <p className="h-6 w-10 bg-primary rounded-full ml-2 bg-opacity-80"></p>
-              <p className="h-5 w-8 bg-primary rounded-full ml-2 bg-opacity-80"></p>
+              <p className="h-7 w-7 bg-primary rounded-full ml-2 bg-opacity-80"></p>
+              <p className="h-7 w-7 bg-primary rounded-full ml-2 bg-opacity-80"></p>
+              <p className="h-7 w-7 bg-primary rounded-full ml-2 bg-opacity-80"></p>
             </div>
           </div>
         </div>
