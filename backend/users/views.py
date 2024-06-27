@@ -6,6 +6,7 @@ from.serializers import (
     WalletSerializer, 
     TransferSerializer,
     UserSerializer,
+    FundWalletSerializer,
     )
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.views import APIView
@@ -14,6 +15,7 @@ from rest_framework.response import Response
 from django.contrib.auth.hashers import check_password
 from .models import Notification, Wallet, User
 from rest_framework.permissions import IsAuthenticated
+from django.shortcuts import get_object_or_404
 
 
 
@@ -77,10 +79,21 @@ class NotificationListView(generics.ListAPIView):
     def get_queryset(self):
         return Notification.objects.filter(user=self.request.user)
 
-class WalletDetailView(generics.RetrieveAPIView):
+class WalletDetailView(generics.RetrieveUpdateAPIView):
     queryset = Wallet.objects.all()
     serializer_class = WalletSerializer
+    permission_classes = [IsAuthenticated]
     lookup_field = 'wallet_name__username'
+
+class FundWalletView(generics.RetrieveUpdateAPIView):
+    queryset = Wallet.objects.all()
+    serializer_class = FundWalletSerializer
+    permission_classes = [IsAuthenticated]
+    
+    def get_object(self):
+        username = self.kwargs.get('wallet_name__username')
+        return get_object_or_404(Wallet, wallet_name__username=username)
+
 
 
 class UserDetail(generics.RetrieveUpdateAPIView):

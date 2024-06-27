@@ -39,6 +39,7 @@ export const WalletProvider = ({ children }) => {
     }));
   };
 
+
   return (
     <WalletContext.Provider value={{ walletData, updateWalletBalance }}>
       {children}

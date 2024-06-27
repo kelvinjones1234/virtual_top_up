@@ -49,6 +49,20 @@ class WalletSerializer(serializers.ModelSerializer):
         model = Wallet
         fields = ['id', 'wallet_name', 'balance', 'last_funded']
 
+
+class FundWalletSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Wallet
+        fields = ['balance']  
+
+    def update(self, instance, validated_data):
+        amount_to_add = validated_data.get('balance', 0)
+        instance.balance += amount_to_add
+        instance.save()
+        return instance
+
+
+
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User

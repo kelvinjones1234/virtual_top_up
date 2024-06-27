@@ -74,12 +74,12 @@ function App() {
                     path="/user/dashboard/transactions"
                   />
                 </Route>
-                <Route element={<PrivateRoute />}>
+                {/* <Route element={<PrivateRoute />}>
                   <Route
                     element={<FundWalletPage />}
                     path="/user/dashboard/fund wallet"
                   />
-                </Route>
+                </Route> */}
               </Routes>
             </div>
           </WalletProvider>

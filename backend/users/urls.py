@@ -10,8 +10,9 @@ from .views import (
   TransferView, 
   NotificationListView,
    WalletDetailView,
+   FundWalletView,
 )
-
+ 
 urlpatterns = [
   path('token/', MyTokenObtainPairView.as_view(), name='token_obtain_pair'),
   path('token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
@@ -19,6 +20,7 @@ urlpatterns = [
 
   # transfer and notifications
   path('wallet/<str:wallet_name__username>/', WalletDetailView.as_view(), name='wallet_detail'),
+  path('fund-wallet/<str:wallet_name__username>/', FundWalletView.as_view(), name='wallet_detail'),
   path('transfer/', TransferView.as_view(), name='transfer'),
   path('notifications/', NotificationListView.as_view(), name='notifications'),
 

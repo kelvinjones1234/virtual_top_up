@@ -39,7 +39,7 @@ const UserDashBoard = () => {
           </div>
           <div className="flex justify-between items-center">
             <p className="text-[1.5rem] font-bold">
-              ₦ {walletData && walletData.balance}
+              ₦ {walletData && walletData.balance.toLocaleString()}
             </p>
             <div className="button flex items-center">
               <div

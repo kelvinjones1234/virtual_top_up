@@ -15,7 +15,7 @@ class User(AbstractUser):
 class Wallet(models.Model):
   wallet_name = models.OneToOneField(User, on_delete=models.CASCADE, related_name='wallet')
   balance = models.PositiveBigIntegerField(default=0)
-  last_funded = models.DateTimeField(auto_now_add=True)
+  last_funded = models.DateTimeField(auto_now_add=True) 
 
   def __str__(self):
     return self.wallet_name.username
