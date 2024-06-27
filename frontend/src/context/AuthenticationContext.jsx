@@ -35,7 +35,7 @@ const AuthProvider = ({ children }) => {
       const response = await axios.post(
         "http://127.0.0.1:8000/api/token/",
         {
-          username: username,
+          username: username.toLowerCase(),
           password: password,
         },
         {

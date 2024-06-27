@@ -44,7 +44,7 @@ const UserDashBoard = () => {
             <div className="button flex items-center">
               <div
                 onClick={handleOpenModal}
-                className="bg-green-500 hover:bg-green-600 transition duration-400 ease-in-out text-primary rounded-[2rem] pb-[.3rem] pt-[.4rem] px-[.9rem] font-bold cursor-pointer"
+                className="bg-green-500 hover:bg-green-600 transition duration-400 ease-in-out text-white rounded-[2rem] pb-[.35rem] pt-[.4rem] px-[.9rem] font-bold cursor-pointer"
               >
                 + Fund Wallet
               </div>

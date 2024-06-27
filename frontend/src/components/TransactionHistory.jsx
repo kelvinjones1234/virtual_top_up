@@ -144,12 +144,11 @@ const TransactionHistory = () => {
                           item.status_display === "Success"
                             ? "text-green-400 bg-white bg-opacity-20"
                             : "text-red-400 bg-white bg-opacity-20"
-                        } text-center rounded-[.5rem] font-bold`}
+                        } text-center rounded-[.8rem] font-bol`}
                       >
                         {item.status_display}
                       </div>
                     </td>
-                    {console.log(item)}
                   </tr>
                 ))}
               </tbody>

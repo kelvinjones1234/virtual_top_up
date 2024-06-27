@@ -1,4 +1,4 @@
-import { useEffect, React, useState, useContext } from "react";
+import { useEffect, useState, useContext } from "react";
 import close from "../assets/close.svg";
 import { useWallet } from "../context/WalletContext";
 import { AuthContext } from "../context/AuthenticationContext";
@@ -8,10 +8,16 @@ const FundWalletModal = ({ onClose }) => {
   const { authTokens, user } = useContext(AuthContext);
   const { walletData, updateWalletBalance } = useWallet();
   const [amount, setAmount] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const handleUpdateBalance = () => {
+    if (Number(amount) < 0) {
+      setErrorMessage("Please enter a positive amount.");
+      return;
+    }
     const newBalance = Number(walletData.balance) + Number(amount);
     updateWalletBalance(newBalance);
+    setErrorMessage(""); // Clear the error message after successful update
   };
 
   useEffect(() => {
@@ -38,6 +44,16 @@ const FundWalletModal = ({ onClose }) => {
   }, []);
 
   const payWithMonnify = async () => {
+    if (Number(amount) < 0) {
+      setErrorMessage("Please enter a positive amount.");
+      return;
+    }
+
+    if (Number(amount) < 500) {
+      setErrorMessage("Amount is bellow fund amount.");
+      return;
+    }
+
     if (typeof MonnifySDK === "undefined") {
       console.error("Monnify SDK is not loaded yet.");
       return;
@@ -47,15 +63,10 @@ const FundWalletModal = ({ onClose }) => {
       amount: amount,
       currency: "NGN",
       reference: String(new Date().getTime() * Math.random() + 1),
-      // customerFullName: "Damilare Ogunnaike",
       customerEmail: walletData.wallet_name.email,
       apiKey: "MK_TEST_YX3CEVCCPN",
       contractCode: "9500216336",
       paymentDescription: "Fund Wallet",
-      // metadata: {
-      //   name: "Damilare",
-      //   age: 45,
-      // },
       onLoadStart: () => {
         console.log("Loading has started");
       },
@@ -78,13 +89,6 @@ const FundWalletModal = ({ onClose }) => {
               },
             }
           )
-          // .then((response) => {
-          //   // console.log("User wallet updated successfully:", response.data);
-          //   // // setSuccessMessage("Profile updated successfully!");
-          //   // // setTimeout(() => {
-          //   // //   setSuccessMessage("");
-          //   // // }, 3000); // Hide message after 3 seconds
-          // })
           .catch((error) => {
             console.error("There was an error updating the user data!", error);
           });
@@ -102,7 +106,7 @@ const FundWalletModal = ({ onClose }) => {
 
       <div className="bg-gray-600 rounded-2xl p-8 z-10 mx-auto max-w-[500px] relative">
         <div
-          className="h-10 w-10 bg-red-500 hover:bg-red-600 transition duration-400 ease-in-out right-[-10px] bottom-[14rem] cursor-pointer rounded-full absolute"
+          className="h-10 w-10 bg-red-500 hover:bg-red-600 transition duration-400 ease-in-out right-[-10px] bottom-[15.5rem] cursor-pointer rounded-full absolute"
           onClick={onClose}
         >
           <div className="relative">
@@ -115,6 +119,8 @@ const FundWalletModal = ({ onClose }) => {
         </div>
         <h2 className="text-2xl text-primary mb-4 font-bold">Fund Wallet</h2>
         <div className="">
+          {errorMessage && <p className="text-red-500 mt-2">{errorMessage}</p>}
+
           <div>
             <input
               type="text"
