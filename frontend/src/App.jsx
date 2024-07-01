@@ -29,7 +29,7 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/authentication/login" element={<LoginPage />} />
                 <Route
-                  path="/authentication/register"
+                  path="authentication/register"
                   element={<RegisterationPage />}
                 />
                 {/* <Route path="/" element={<PrivateRoute />}> */}
