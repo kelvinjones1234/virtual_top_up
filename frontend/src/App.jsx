@@ -4,7 +4,7 @@ import AuthProvider from "./context/AuthenticationContext";
 import LoginPage from "./pages/LoginPage";
 import RegisterationPage from "./pages/RegisterationPage";
 import UserDashboardPage from "./pages/UserDashboardPage";
-// import PrivateRoute from "./utils/PrivateRoute";
+import PrivateRoute from "./utils/PrivateRoute";
 import DataPage from "./pages/DataPage";
 import AirtimePage from "./pages/AirtimePage";
 import CableSubPage from "./pages/CableSubPage";
@@ -32,33 +32,36 @@ function App() {
                   path="/authentication/register"
                   element={<RegisterationPage />}
                 />
-                {/* <Route path="/" element={<PrivateRoute />}> */}
-                <Route path="/user/dashboard" element={<UserDashboardPage />} />
-                <Route
-                  path="/user/dashboard/services/data"
-                  element={<DataPage />}
-                />
-                <Route
-                  path="/user/dashboard/services/airtime"
-                  element={<AirtimePage />}
-                />
-                <Route
-                  path="/user/dashboard/services/cable subscription"
-                  element={<CableSubPage />}
-                />
-                <Route
-                  path="/user/dashboard/services/electricity bill"
-                  element={<ElectricityBillPage />}
-                />
-                <Route
-                  path="/user/dashboard/profile"
-                  element={<ProfilePage />}
-                />
-                <Route
-                  path="/user/dashboard/transactions"
-                  element={<TransactionHistoryPage />}
-                />
-                {/* </Route> */}
+                <Route path="/" element={<PrivateRoute />}>
+                  <Route
+                    path="/user/dashboard"
+                    element={<UserDashboardPage />}
+                  />
+                  <Route
+                    path="/user/dashboard/services/data"
+                    element={<DataPage />}
+                  />
+                  <Route
+                    path="/user/dashboard/services/airtime"
+                    element={<AirtimePage />}
+                  />
+                  <Route
+                    path="/user/dashboard/services/cable subscription"
+                    element={<CableSubPage />}
+                  />
+                  <Route
+                    path="/user/dashboard/services/electricity bill"
+                    element={<ElectricityBillPage />}
+                  />
+                  <Route
+                    path="/user/dashboard/profile"
+                    element={<ProfilePage />}
+                  />
+                  <Route
+                    path="/user/dashboard/transactions"
+                    element={<TransactionHistoryPage />}
+                  />
+                </Route>
               </Routes>
             </div>
           </WalletProvider>
