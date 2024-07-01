@@ -1,0 +1,17 @@
+# Ignore compiled bytecode files and __pycache__ directories
+__pycache__/
+*.pyc
+
+# Ignore other potentially unnecessary files
+*.pyo
+*.pyd
+*.pdb
+
+# Ignore virtual environment directories
+venv/
+.env/
+
+# Ignore other common files
+.DS_Store
+.idea/
+.vscode/

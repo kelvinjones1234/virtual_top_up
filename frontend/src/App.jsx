@@ -13,7 +13,8 @@ import ElectricityBillPage from "./pages/ElectricityBillPage";
 import ProfilePage from "./pages/ProfilePage";
 import TransactionHistoryPage from "./pages/TransactionHistoryPage";
 import { WalletProvider } from "./context/WalletContext";
-import FundWalletPage from "./pages/FundWalletPage";
+import PasswordResetRequestPage from "./pages/PasswordResetRequestPage";
+import PasswordResetPage from "./pages/PasswordResetPage";
 
 function App() {
   return (
@@ -27,10 +28,18 @@ function App() {
               ></div>
               <Routes>
                 <Route path="/" element={<HomePage />} />
+                <Route
+                  path="/user/get-password-reset-link"
+                  element={<PasswordResetRequestPage />}
+                />
                 <Route path="/authentication/login" element={<LoginPage />} />
                 <Route
                   path="/authentication/register"
                   element={<RegisterationPage />}
+                />
+                <Route
+                  path="/user/reset-password/:uid/:token"
+                  element={<PasswordResetPage />}
                 />
                 <Route path="/" element={<PrivateRoute />}>
                   <Route
