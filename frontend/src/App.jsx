@@ -26,9 +26,9 @@ function App() {
                 className={`bg-custom-gradient w-full z-[-2] min-w-[150px] fixed top-0 left-0 min-h-screen`}
               ></div>
               <Routes>
-                <Route element={<HomePage />} path="/" />
+                {/* <Route element={<HomePage />} path="/" /> */}
                 <Route element={<LoginPage />} path="/authentication/login" />
-                <Route element={<UserDashboardPage />} path="/user/dashboard" />
+                <Route element={<UserDashboardPage />} path="/" />
                 <Route
                   element={<RegisterationPage />}
                   path="/authentication/register"
