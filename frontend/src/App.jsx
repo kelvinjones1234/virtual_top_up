@@ -43,11 +43,11 @@ function App() {
                 element={<AirtimePage />}
               />
               <Route
-                path="user/dashboard/services/cable-subscription"
+                path="user/dashboard/services/cable subscription"
                 element={<CableSubPage />}
               />
               <Route
-                path="user/dashboard/services/electricity-bill"
+                path="user/dashboard/services/electricity bill"
                 element={<ElectricityBillPage />}
               />
               <Route path="user/dashboard/profile" element={<ProfilePage />} />
