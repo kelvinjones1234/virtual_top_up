@@ -9,8 +9,10 @@ from .views import (
   RegisterView, 
   TransferView, 
   NotificationListView,
-   WalletDetailView,
-   FundWalletView,
+  WalletDetailView,
+  FundWalletView,
+  PasswordResetRequestView,
+  PasswordResetView
 )
  
 urlpatterns = [
@@ -25,5 +27,10 @@ urlpatterns = [
   path('notifications/', NotificationListView.as_view(), name='notifications'),
 
   # user profile display and update endpoint
-  path('user/', UserDetail.as_view(), name='user-detail')
+  path('user/', UserDetail.as_view(), name='user-detail'),
+
+  #reset password
+  path('password-reset/', PasswordResetRequestView.as_view(), name='password_reset_request'),
+  path('reset-password/<uidb64>/<token>/', PasswordResetView.as_view(), name='password_reset_confirm'),
+
 ]

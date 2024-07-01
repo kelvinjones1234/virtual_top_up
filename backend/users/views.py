@@ -7,6 +7,8 @@ from.serializers import (
     TransferSerializer,
     UserSerializer,
     FundWalletSerializer,
+    PasswordResetSerializer,
+    PasswordResetRequestSerializer
     )
 from rest_framework_simplejwt.views import TokenObtainPairView
 from rest_framework.views import APIView
@@ -17,6 +19,9 @@ from .models import Notification, Wallet, User
 from rest_framework.permissions import IsAuthenticated
 from django.shortcuts import get_object_or_404
 
+from django.utils.http import urlsafe_base64_encode, urlsafe_base64_decode
+from django.utils.encoding import force_bytes, force_str
+from django.contrib.auth.tokens import default_token_generator
 
 
 class MyTokenObtainPairView(TokenObtainPairView):
@@ -95,7 +100,6 @@ class FundWalletView(generics.RetrieveUpdateAPIView):
         return get_object_or_404(Wallet, wallet_name__username=username)
 
 
-
 class UserDetail(generics.RetrieveUpdateAPIView):
     queryset = User.objects.all()
     serializer_class = UserSerializer
@@ -103,3 +107,35 @@ class UserDetail(generics.RetrieveUpdateAPIView):
     
     def get_object(self):
         return self.request.user 
+
+class PasswordResetRequestView(APIView):
+    def post(self, request, *args, **kwargs):
+        serializer = PasswordResetRequestSerializer(data=request.data)
+        if serializer.is_valid():
+            email = serializer.validated_data['email']
+            try:
+                user = User.objects.get(email=email)
+                token = default_token_generator.make_token(user)
+                uid = urlsafe_base64_encode(force_bytes(user.pk))
+                reset_link = f'http://localhost:8000/reset-password/{uid}/{token}/'
+                return Response({'reset_link': reset_link}, status=status.HTTP_200_OK)
+            except User.DoesNotExist:
+                return Response({'error': 'User with this email does not exist'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class PasswordResetView(APIView):
+    def post(self, request, uidb64, token, *args, **kwargs):
+        serializer = PasswordResetSerializer(data=request.data)
+        if serializer.is_valid():
+            uid = force_str(urlsafe_base64_decode(uidb64))
+            try:
+                user = User.objects.get(pk=uid)
+                if default_token_generator.check_token(user, token):
+                    user.set_password(serializer.validated_data['password'])
+                    user.save()
+                    return Response({'message': 'Password has been reset successfully'}, status=status.HTTP_200_OK)
+                else:
+                    return Response({'error': 'Invalid token'}, status=status.HTTP_400_BAD_REQUEST)
+            except User.DoesNotExist:
+                return Response({'error': 'Invalid user'}, status=status.HTTP_400_BAD_REQUEST)
+        return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)

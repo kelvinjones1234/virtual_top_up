@@ -26,60 +26,42 @@ function App() {
                 className={`bg-custom-gradient w-full z-[-2] min-w-[150px] fixed top-0 left-0 min-h-screen`}
               ></div>
               <Routes>
-                <Route element={<HomePage />} path="/" />
-                <Route element={<LoginPage />} path="/authentication/login" />
+                <Route path="/" element={<HomePage />} />
+                <Route path="/authentication/login" element={<LoginPage />} />
                 <Route
-                  element={<RegisterationPage />}
                   path="/authentication/register"
+                  element={<RegisterationPage />}
                 />
-                <Route element={<PrivateRoute />}>
+                <Route path="/" element={<PrivateRoute />}>
                   <Route
-                    element={<UserDashboardPage />}
                     path="/user/dashboard"
+                    element={<UserDashboardPage />}
                   />
-                </Route>
-                <Route element={<PrivateRoute />}>
                   <Route
-                    element={<DataPage />}
                     path="/user/dashboard/services/data"
+                    element={<DataPage />}
                   />
-                </Route>
-                <Route element={<PrivateRoute />}>
                   <Route
-                    element={<AirtimePage />}
                     path="/user/dashboard/services/airtime"
+                    element={<AirtimePage />}
                   />
-                </Route>
-                <Route element={<PrivateRoute />}>
                   <Route
-                    element={<CableSubPage />}
                     path="/user/dashboard/services/cable subscription"
+                    element={<CableSubPage />}
                   />
-                </Route>
-                <Route element={<PrivateRoute />}>
                   <Route
-                    element={<ElectricityBillPage />}
                     path="/user/dashboard/services/electricity bill"
+                    element={<ElectricityBillPage />}
                   />
-                </Route>
-                <Route element={<PrivateRoute />}>
                   <Route
-                    element={<ProfilePage />}
                     path="/user/dashboard/profile"
+                    element={<ProfilePage />}
                   />
-                </Route>
-                <Route element={<PrivateRoute />}>
                   <Route
-                    element={<TransactionHistoryPage />}
                     path="/user/dashboard/transactions"
+                    element={<TransactionHistoryPage />}
                   />
                 </Route>
-                {/* <Route element={<PrivateRoute />}>
-                  <Route
-                    element={<FundWalletPage />}
-                    path="/user/dashboard/fund wallet"
-                  />
-                </Route> */}
               </Routes>
             </div>
           </WalletProvider>
