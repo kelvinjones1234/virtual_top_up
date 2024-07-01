@@ -26,12 +26,12 @@ function App() {
                 className={`bg-custom-gradient w-full z-[-2] min-w-[150px] fixed top-0 left-0 min-h-screen`}
               ></div>
               <Routes>
-                <Route element={<HomePage />} path="/" />
+                {/* <Route element={<HomePage />} path="/" />
                 <Route element={<LoginPage />} path="/authentication/login" />
                 <Route
                   element={<RegisterationPage />}
                   path="/authentication/register"
-                />
+                /> */}
                 <Route element={<PrivateRoute />}>
                   <Route
                     element={<UserDashboardPage />}
@@ -74,12 +74,6 @@ function App() {
                     path="/user/dashboard/transactions"
                   />
                 </Route>
-                {/* <Route element={<PrivateRoute />}>
-                  <Route
-                    element={<FundWalletPage />}
-                    path="/user/dashboard/fund wallet"
-                  />
-                </Route> */}
               </Routes>
             </div>
           </WalletProvider>
