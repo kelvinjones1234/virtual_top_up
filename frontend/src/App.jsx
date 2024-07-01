@@ -29,33 +29,33 @@ function App() {
                 <Route path="/" element={<HomePage />} />
                 <Route path="/authentication/login" element={<LoginPage />} />
                 <Route
-                  path="authentication/register"
+                  path="/authentication/register"
                   element={<RegisterationPage />}
                 />
                 {/* <Route path="/" element={<PrivateRoute />}> */}
-                <Route path="user/dashboard" element={<UserDashboardPage />} />
+                <Route path="/user/dashboard" element={<UserDashboardPage />} />
                 <Route
-                  path="user/dashboard/services/data"
+                  path="/user/dashboard/services/data"
                   element={<DataPage />}
                 />
                 <Route
-                  path="user/dashboard/services/airtime"
+                  path="/user/dashboard/services/airtime"
                   element={<AirtimePage />}
                 />
                 <Route
-                  path="user/dashboard/services/cable subscription"
+                  path="/user/dashboard/services/cable subscription"
                   element={<CableSubPage />}
                 />
                 <Route
-                  path="user/dashboard/services/electricity bill"
+                  path="/user/dashboard/services/electricity bill"
                   element={<ElectricityBillPage />}
                 />
                 <Route
-                  path="user/dashboard/profile"
+                  path="/user/dashboard/profile"
                   element={<ProfilePage />}
                 />
                 <Route
-                  path="user/dashboard/transactions"
+                  path="/user/dashboard/transactions"
                   element={<TransactionHistoryPage />}
                 />
                 {/* </Route> */}
