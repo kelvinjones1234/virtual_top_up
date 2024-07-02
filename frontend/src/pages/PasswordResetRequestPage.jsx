@@ -55,11 +55,6 @@ const PasswordResetRequestPage = () => {
                 Enter your registered email to reset your password
               </p>
             </div>
-            {/* {errorMessage.anonymousError && (
-              <div className="text-white ">
-                <p>Incorrect login details.</p>
-              </div>
-            )} */}
             <div>
               <input
                 type="text"
@@ -69,11 +64,7 @@ const PasswordResetRequestPage = () => {
                 onChange={(e) => setEmail(e.target.value)}
                 className="transition duration-450 ease-in-out my-2 w-full text-white py-1 px-4 h-[3.5rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-700 hover:border-black focus:border-link bg-opacity-80"
               />
-              {/* {errorMessage.emailError && (
-                <div className="text-white mb-3 ">
-                  {errorMessage.emailError}
-                </div>
-              )} */}
+
             </div>
 
             <div className="text-center text-[1rem] text-gray-300 py-4 ss:hidden">
