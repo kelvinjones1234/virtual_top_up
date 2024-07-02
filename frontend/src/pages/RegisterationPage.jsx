@@ -187,7 +187,7 @@ const RegisterationPage = () => {
               </div> */}
               <div className="ss:pb-16">
                 <button
-                  className="my-2 w-full p-1 h-[3.2rem] bg-link text-black rounded-2xl bg-opacity-90 font-semibold hover:bg-sky-500 transition duration-450 ease-in-out"
+                  className="my-6 w-full p-1 h-[3.2rem] bg-link text-black rounded-2xl bg-opacity-90 font-semibold hover:bg-sky-500 transition duration-450 ease-in-out"
                   type="submit"
                 >
                   Register
