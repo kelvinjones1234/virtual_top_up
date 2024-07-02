@@ -11,7 +11,7 @@ const LeftSide = () => (
 );
 
 const inputStyle =
-  "transition duration-450 ease-in-out my-2 w-full text-white py-1 px-4 h-[3.5rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-800 hover:border-black focus:border-link bg-opacity-80";
+  "transition duration-450 ease-in-out my-2 w-full text-white py-1 px-4 h-[3.5rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-700 hover:border-black focus:border-link bg-opacity-80";
 
 const RegisterationPage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -52,7 +52,8 @@ const RegisterationPage = () => {
   };
   return (
     <div className="min-w-[150px] bg-opacity-[95%] z-[-1] font-body_two">
-      <div className="authentication bg-bg_one bg-contain md:bg-cover bg-center w-full min-h-screen bg-no-repeat">
+      <div className="authentication bg-bg_one bg-contain md:bg-cover bg-center w-full min-h-screen bg-no-repeat fixed z-[-1]"></div>
+      <div>
         <div
           className={`authenticationnavbar flex justify-between p-4 md:px-[6rem] fixed top-0 w-full transition-colors duration-200 ${
             isScrolled ? "bg-opacity-100 bg-gray-900" : "bg-transparent"
