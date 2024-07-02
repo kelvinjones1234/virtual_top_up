@@ -173,7 +173,7 @@ const RegisterationPage = () => {
                   />
                 </div>
               </div>
-              <div className="flex flex-wrap w-full text-white justify-between text-[1rem] text-gray-300 py-5">
+              {/* <div className="flex flex-wrap w-full text-white justify-between text-[1rem] text-gray-300 py-5">
                 <div className="left flex place-items-center">
                   <input
                     type="checkbox"
@@ -184,7 +184,7 @@ const RegisterationPage = () => {
                 <p className="right text-link font-semibold cursor-pointer hover:text-sky-500 transition duration-450 ease-in-out">
                   Forgot password?
                 </p>
-              </div>
+              </div> */}
               <div className="ss:pb-16">
                 <button
                   className="my-2 w-full p-1 h-[3.2rem] bg-link text-black rounded-2xl bg-opacity-90 font-semibold hover:bg-sky-500 transition duration-450 ease-in-out"
