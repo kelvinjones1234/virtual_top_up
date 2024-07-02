@@ -9,7 +9,7 @@ export default {
   theme: {
     extend: {
       backgroundImage: {
-      "bg_one": "url('/src/assets/vtu4.png')",
+      "bg_one": "url('/src/assets/vtu4c.png')",
       "bg_two": "url('/src/assets/why_us.png')",
       'custom-gradient': 'linear-gradient(250deg, #2b4162 -50%, #0A101D 100%)',
 
