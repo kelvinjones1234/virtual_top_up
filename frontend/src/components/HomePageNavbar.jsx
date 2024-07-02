@@ -21,7 +21,7 @@ const HomePageNavbar = ({ homeMenuToggle, setHomeMenuToggle }) => {
 
   useEffect(() => {
     const handleScroll = () => {
-      if (window.scrollY > 100) {
+      if (window.scrollY > 60) {
         setIsScrolled(true);
       } else {
         setIsScrolled(false);
@@ -38,7 +38,7 @@ const HomePageNavbar = ({ homeMenuToggle, setHomeMenuToggle }) => {
     <>
       <div
         className={`p-4 lg:px-0 flex justify-between lg:px-[6rem] fixed top-0 w-full transition-colors duration-200 ${
-          isScrolled ? "bg-opacity-100 bg-gray-900" : "bg-transparent"
+          isScrolled ? "bg-primary" : "bg-transparent"
         }`}
       >
         <div className="flex items-center gap-1">
