@@ -8,6 +8,8 @@ const ProductProvider = ({ children }) => {
   const [airtimeNetworks, setAirtimeNetworks] = useState([]);
   const [cableCategories, setCableCategories] = useState([]);
   const [activePath, setActivePath] = useState(location.pathname);
+  const [darkMode, setDarkMode] = useState(false);
+  const [theme, setTheme] = useState("dark");
 
   useEffect(() => {
     // Fetch all data networks
@@ -45,13 +47,27 @@ const ProductProvider = ({ children }) => {
     products();
   }, []);
 
+  const handleThemeSettings = () => {
+    setDarkMode((previous) => !previous);
+    setTheme(theme == "dark" ? "light" : "dark");
+  };
 
+  useEffect(() => {
+    theme == "dark"
+      ? document.documentElement.classList.add("dark")
+      : document.documentElement.classList.remove("dark");
+  }, [handleThemeSettings]);
 
   const contextData = {
     dataNetworks: dataNetworks,
     productData: productData,
     airtimeNetworks: airtimeNetworks,
     cableCategories: cableCategories,
+    darkMode: darkMode,
+    theme: theme,
+    setTheme: setTheme,
+    setDarkMode: setDarkMode,
+    handleThemeSettings: handleThemeSettings,
   };
   return (
     <ProductContext.Provider value={contextData}>

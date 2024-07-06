@@ -13,6 +13,8 @@ import logout from "../assets/logout.svg";
 import { ProductContext } from "../context/ProductContext";
 import Transfer from "./Transfer";
 import { AuthContext } from "../context/AuthenticationContext";
+import dark from "../assets/dark.svg";
+import light from "../assets/light.svg";
 
 const GeneralSidebar = ({
   generalMenuToggle,
@@ -26,7 +28,8 @@ const GeneralSidebar = ({
     setActivePath(location.pathname);
   }, [location.pathname]);
 
-  const { productData } = useContext(ProductContext);
+  const { productData, handleThemeSettings, darkMode, setDarkMode } =
+    useContext(ProductContext);
   const { logoutUser } = useContext(AuthContext);
   const [activePath, setActivePath] = useState(location.pathname);
   const [transferForm, setTransferForm] = useState(false);
@@ -54,25 +57,35 @@ const GeneralSidebar = ({
         ></div>
       )}
       <div
-        className={`harmburger-dropdown fixed top-0 left-0 h-screen p-[1rem] pr-0 bg-primary sm:hidden text-white transform transition-transform rounded-r-xl duration-200 ease-in-out z-20 ${
+        className={`harmburger-dropdown fixed top-0 left-0 h-screen p-[1rem] pr-0 bg-white dark:bg-primary sm:hidden text-primary dark:text-white transform transition-transform rounded-r-xl duration-200 ease-in-out z-20 ${
           generalMenuToggle ? "translate-x-0" : "-translate-x-full"
         }`}
         onClick={(e) => e.stopPropagation()} // Prevent click event propagation to overlay
       >
-        <div className="flex items-center gap-1 mt-3">
-          <Link to={"/"}>
-            <div className="logo font-heading_one text-green-500 border border-green-500 px-2 text-[.7rem] px-2 border-white rounded-[.5rem] font-bold">
-              Atom
+        <div className="flex justify-between mr-9">
+          <div className="flex items-center gap-1 mt-3">
+            <Link to={"/"}>
+              <div className="logo font-heading_one text-green-500 border  dark:border-green-500 px-2 text-[.7rem] px-2 border-green-500 rounded-[.5rem] font-bold">
+                Atom
+              </div>
+            </Link>
+            <div className="h-3 w-3 bg-green-500 rounded-full"></div>
+            <div className="h-3 w-3 bg-green-500 rounded-full"></div>
+            <div className="h-3 w-3 bg-green-500 rounded-full"></div>
+          </div>
+          <div className="light-dark-mode mt-3">
+            <div
+              onClick={handleThemeSettings}
+              className="justify-center py-[.5rem] gap-8 rounded-xl flex items-center bg-gray-200 hover:bg-gray-300 px-3 dark:bg-white dark:bg-opacity-20 dark:hover:bg-opacity-10 transition duration-300 ease-in-out cursor-pointer"
+            >
+              <img src={darkMode ? dark : light} alt="" className="w-4" />
             </div>
-          </Link>
-          <div className="h-3 w-3 bg-green-500 rounded-full"></div>
-          <div className="h-3 w-3 bg-green-500 rounded-full"></div>
-          <div className="h-3 w-3 bg-green-500 rounded-full"></div>
+          </div>
         </div>
 
         <div className="h-full overflow-y-auto pr-[1rem]">
-          <ul className="w-[13rem]">
-            <div className="h-[4rem] w-52 bg-white bg-opacity-20 my-12 rounded-xl flex items-center font-bold">
+          <ul className="w-[13rem] font-bold">
+            <div className="h-[4rem] w-52 bg-gray-300 dark:bg-white dark:bg-opacity-20 my-12 rounded-xl flex items-center font-bold">
               <div className="h-10 w-10 bg-sky-500 rounded-full flex justify-center items-center m-3">
                 <p>P</p>
               </div>
@@ -87,17 +100,17 @@ const GeneralSidebar = ({
                   activePath === "/user/dashboard" && "bg-white bg-opacity-20"
                 }`}
               >
-                <Link to={"/user/dashboard"} className="flex">
+                <Link to={"/user/dashboard"} className="flex items-center">
                   <img
                     src={dashboard}
                     alt=""
-                    className="h-[1.2rem] w-[1.1rem] ml-[.2rem] mr-[1rem]"
+                    className="h-[1.2rem] ml-[.2rem] mr-[1rem]"
                   />
                   <div>Dashboard</div>
                 </Link>
               </li>
               <li
-                className="mt-4 items-center flex  py-3 px-2 rounded-xl"
+                className="mt-4 items-center flex py-3 px-2 rounded-xl"
                 onClick={handleTransferForm}
               >
                 <img
@@ -114,7 +127,7 @@ const GeneralSidebar = ({
               </div>
               <li
                 onClick={handleGeneralSideBarAuthToggle}
-                className={`flex py-3 mt-4 py-3 px-2 rounded-xl ${
+                className={`flex py-3 mt-4 py-3 items-center px-2 rounded-xl ${
                   activePath === "/user/dashboard/services/data" ||
                   activePath === "/user/dashboard/services/airtime" ||
                   activePath ===
@@ -165,22 +178,35 @@ const GeneralSidebar = ({
                 "bg-white bg-opacity-20"
               }`}
             >
-              <Link to={"/user/dashboard/transactions"} className="flex">
+              <Link
+                to={"/user/dashboard/transactions"}
+                className="flex items-center"
+              >
                 <img
                   src={transactions}
                   alt=""
-                  className="h-[1.2rem] w-[1.1rem] ml-[.2rem] mr-[1rem]"
+                  className="h-[1.2rem] ml-[.2rem] mr-[1rem]"
                 />
                 <div>Transactions</div>
               </Link>
             </li>
-            <li className="mt-4 items-center flex  py-3 px-2 rounded-xl">
-              <img
-                src={price_list}
-                alt=""
-                className="h-[1.2rem] w-[1.1rem] ml-[.2rem] mr-[1rem]"
-              />
-              <div>Price List</div>
+            <li
+              className={`mt-4 items-center py-3 px-2 rounded-xl ${
+                activePath === "/user/dashboard/transactions" &&
+                "bg-white bg-opacity-20"
+              }`}
+            >
+              <Link
+                to={"/user/dashboard/transactions"}
+                className="flex items-center"
+              >
+                <img
+                  src={price_list}
+                  alt=""
+                  className="h-[1.2rem] ml-[.2rem] mr-[1rem]"
+                />
+                <div>Price List</div>
+              </Link>
             </li>
             <li
               className={`mt-4 items-center flex  py-3 px-2 rounded-xl ${
@@ -188,7 +214,10 @@ const GeneralSidebar = ({
                 "bg-white bg-opacity-20"
               }`}
             >
-              <Link to={"/user/dashboard/profile"} className="flex">
+              <Link
+                to={"/user/dashboard/profile"}
+                className="flex items-center"
+              >
                 <img
                   src={dashboard}
                   alt=""

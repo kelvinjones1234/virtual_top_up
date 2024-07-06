@@ -4,13 +4,15 @@ export default {
     "./index.html",
     "./src/**/*.{js,ts,jsx,tsx}",
   ],
+  darkMode:'class',
   mode: "jit",
 
   theme: {
     extend: {
       backgroundImage: {
-      "bg_one": "url('/src/assets/vtu4c.png')",
-      'custom-gradient': 'linear-gradient(250deg, #2b4162 -50%, #0A101D 100%)',
+      'bg_one': "url('/src/assets/vtu4c.png')",
+      'dark-custom-gradient': 'linear-gradient(250deg, #2b4162 -50%, #0A101D 100%)',
+      'light-custom-gradient':'linear-gradient(250deg, rgba(0,163,255,0.13) -50%, rgba(0,163,255,0) 100%)',
 
 
       },

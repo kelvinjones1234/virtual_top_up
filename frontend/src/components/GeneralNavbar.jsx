@@ -7,11 +7,13 @@ import GeneralSidebar from "./GeneralSidebar";
 import dark from "../assets/dark.svg";
 import light from "../assets/light.svg";
 import { AuthContext } from "../context/AuthenticationContext";
+import { ProductContext } from "../context/ProductContext";
 
 const GeneralNavbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const [darkMode, setDarkMode] = useState(true);
   const { user } = useContext(AuthContext);
+  const { darkMode, setDarkMode, handleThemeSettings } =
+    useContext(ProductContext);
 
   const [generalMenuToggle, setGeneralMenuToggle] = useState(false);
 
@@ -50,14 +52,16 @@ const GeneralNavbar = () => {
     <>
       <div
         className={`p-4 lg:px-0 flex justify-between z-[10] fixed top-0 w-full transition-colors duration-200 ${
-          isScrolled ? "bg-opacity-100 bg-gray-900" : "bg-transparent"
+          isScrolled
+            ? "dark:bg-primary dark:bg-opacity-95 bg-white bg-opacity-95 shadow"
+            : "bg-transparent"
         }`}
       >
         <div className="flex justify-between lg:px-[6rem] w-[2000px] mx-auto">
           <div className="left flex gap-6 items-center">
             <div className="flex items-center gap-1">
               <Link to={"/"}>
-                <div className="logo font-heading_one text-green-500 border border-green-500 px-2 text-[.7rem] px-2 border-white rounded-[.5rem] font-bold">
+                <div className="logo font-heading_one text-green-500 border border-green-500 px-2 text-[.7rem] px-2 dark:border-white border-primary rounded-[.5rem] font-bold">
                   Atom
                 </div>
               </Link>
@@ -65,13 +69,16 @@ const GeneralNavbar = () => {
               <div className="h-3 w-3 bg-green-500 rounded-full"></div>
               <div className="h-3 w-3 bg-green-500 rounded-full"></div>
             </div>
-            <div className="text-white font-bold">
+            <div className="text-primary font-bold dark:text-white">
               Hi, {user.first_name.toUpperCase()}
             </div>
           </div>
           <div className="light-dark-mode hidden sm:block">
-            <div className="light-dark-mode justify-center py-[.5rem] gap-8 rounded-xl flex items-center font-bold text-white px-3 bg-white bg-opacity-20 hover:bg-opacity-10 transition duration-300 ease-in-out cursor-pointer">
-              <img src={darkMode ? light : dark} alt="" className="w-4" />
+            <div
+              onClick={handleThemeSettings}
+              className="justify-center py-[.5rem] gap-8 rounded-xl flex items-center bg-gray-200 hover:bg-gray-300 px-3 dark:bg-white dark:bg-opacity-20 dark:hover:bg-opacity-10 transition duration-300 ease-in-out cursor-pointer"
+            >
+              <img src={darkMode ? dark : light} alt="" className="w-4" />
             </div>
           </div>
         </div>

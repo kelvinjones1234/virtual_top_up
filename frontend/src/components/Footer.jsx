@@ -12,7 +12,7 @@ const socials = [
 
 const Footer = () => {
   return (
-    <div className="text-center mt-10 brder-t border-link bg-primary bg-opacity-80 w-full mx-auto text-white font-body_two ss:px-20 px-4">
+    <div className="text-center mt-10 brder-t border-link bg-white dark:bg-primary dark:text-white text-primary bg-opacity-80 w-full mx-auto font-body_two ss:px-20 px-4">
       <div className="sm:flex sm:justify-between max-w-[1000px] mx-auto">
         <div className="legals sm:mt-16 sm:mx-3">
           <h3 className="text-link font-heading_two pt-4 text-2xl font-bold">
@@ -48,7 +48,7 @@ const Footer = () => {
         <div className="logo">
           <div className="flex justify-center items-center gap-1">
             <Link to={"/"}>
-              <div className="logo font-heading_one text-green-500 border border-green-500 px-2 text-[.7rem] px-2 border-white rounded-[.5rem] font-bold">
+              <div className="logo font-heading_one text-green-500 border dark:border-white border-primary px-2 text-[.7rem] px-2 rounded-[.5rem] font-bold">
                 Atom
               </div>
             </Link>

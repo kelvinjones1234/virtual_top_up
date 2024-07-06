@@ -24,7 +24,7 @@ function App() {
           <WalletProvider>
             <div>
               <div
-                className={`bg-custom-gradient w-full z-[-2] min-w-[150px] fixed top-0 left-0 min-h-screen`}
+                className={`bg-white dark:bg-dark-custom-gradient w-full z-[-2] min-w-[150px] fixed top-0 left-0 min-h-screen`}
               ></div>
               <Routes>
                 <Route path="/" element={<HomePage />} />

@@ -51,12 +51,12 @@ const GeneralLeft = () => {
         <div
           className={`py-[.7rem] rounded-xl font-bold text-white px-4 mt-4 max-w-[13rem] sm:mt-0 ${
             activePath === "/user/dashboard"
-              ? "bg-white bg-opacity-20"
-              : "hover:bg-white hover:bg-opacity-5 transition duration-400 ease-in-out"
+              ? "dark:bg-white dark:bg-opacity-20 bg-gray-300"
+              : "dark:hover:bg-white dark:hover:bg-opacity-5 transition duration-400 ease-in-out hover:bg-gray-100"
           }`}
           onClick={handleDropDownClose}
         >
-          <div className="cursor-pointer inline-flex items-center gap-3">
+          <div className="cursor-pointer dark:text-white text-primary inline-flex items-center gap-3">
             <img src={dashboard} alt="" className="w-4" />
             <Link to={"/user/dashboard"}>
               <p className="">Dashboard</p>
@@ -67,11 +67,14 @@ const GeneralLeft = () => {
           className={`py-[.7rem] gap-3 rounded-xl flex items-center max-w-[13rem] font-bold text-white px-4 mt-4 ${
             activePath === "/user/transfer"
               ? "bg-white bg-opacity-20"
-              : "hover:bg-white hover:bg-opacity-5 transition duration-400 ease-in-out"
+              : "dark:hover:bg-white dark:hover:bg-opacity-5 transition duration-400 ease-in-out hover:bg-gray-100"
           }`}
         >
           <img src={transfer} alt="" className="w-4" />
-          <p className="cursor-pointer" onClick={handleTransferForm}>
+          <p
+            className="cursor-pointer dark:text-white text-primary"
+            onClick={handleTransferForm}
+          >
             Transfer
           </p>
         </div>
@@ -80,18 +83,14 @@ const GeneralLeft = () => {
         </div>
         <div className="">
           <div
-            className={`py-[.7rem] rounded-xl max-w-[13rem] flex items-center font-bold text-white px-4 mt-4 hover:bg-white hover:bg-opacity-5 transition duration-400 ease-in-out 
+            className={`py-[.7rem] rounded-xl max-w-[13rem] flex items-center font-bold text-white px-4 mt-4  
           ${
-            servicesDropDown
-              ? "bg-white bg-opacity-5"
-              : "hover:bg-white hover:bg-opacity-5"
-          } ${
-              activePath === "/user/dashboard/services/data" ||
-              activePath === "/user/dashboard/services/airtime" ||
-              activePath === "/user/dashboard/services/cable subscription"
-                ? "bg-white bg-opacity-20"
-                : "hover:bg-white hover:bg-opacity-5 transition duration-400 ease-in-out"
-            }`}
+            activePath === "/user/dashboard/services/data" ||
+            activePath === "/user/dashboard/services/airtime" ||
+            activePath === "/user/dashboard/services/cable subscription"
+              ? "bg-white bg-opacity-20"
+              : "dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-gray-100 transition duration-400 ease-in-out"
+          }`}
           >
             <div
               className="flex items-center relative gap-5 cursor-pointer"
@@ -99,7 +98,7 @@ const GeneralLeft = () => {
             >
               <div className="flex items-center gap-3">
                 <img src={services} alt="" className="w-4" />
-                <div className="">Services</div>
+                <div className="dark:text-white text-primary">Services</div>
               </div>
               <div className="">
                 <img
@@ -115,10 +114,10 @@ const GeneralLeft = () => {
               servicesDropDown ? "block" : "hidden"
             }`}
           >
-            <div className="sidebar-auth-dropdown text-white">
+            <div className="sidebar-auth-dropdown text-primary dark:text-white">
               {productData.slice(0, 4).map((items) => (
                 <li
-                  className="mt-4 pl-11 bg-opacity-25 flex py-2 px-2 rounded-xl hover:bg-white max-w-[13rem] hover:bg-opacity-5 transition duration-400 ease-in-out"
+                  className="mt-4 pl-11 bg-opacity-25 flex py-2 px-2 rounded-xl hover:bg-gray-100 dark:hover:bg-white max-w-[13rem] dark:hover:bg-opacity-5 transition duration-400 ease-in-out"
                   key={items.id}
                 >
                   <Link
@@ -134,35 +133,39 @@ const GeneralLeft = () => {
         <div
           className={`py-[.7rem] gap-3 rounded-xl max-w-[13rem] flex items-center font-bold text-white px-4 mt-4 ${
             activePath === "/user/dashboard/transactions"
-              ? "bg-white bg-opacity-20"
-              : "hover:bg-white hover:bg-opacity-5 transition duration-400 ease-in-out"
+              ? "dark:bg-white dark:bg-opacity-20 bg-gray-300"
+              : "dark:hover:bg-white dark:hover:bg-opacity-5 transition duration-400 ease-in-out hover:bg-gray-100"
           }`}
           onClick={handleDropDownClose}
         >
           <img src={transactions} alt="" className="w-4" />
           <Link to={"/user/dashboard/transactions"}>
-            <p className="cursor-pointer">Transactions</p>
+            <p className="cursor-pointer dark:text-white text-primary">
+              Transactions
+            </p>
           </Link>
         </div>
         <div
           className={`py-[.7rem] gap-3 rounded-xl max-w-[13rem] flex items-center font-bold text-white px-4 mt-4 ${
             activePath === "/user/price-list"
-              ? "bg-white bg-opacity-20"
-              : "hover:bg-white hover:bg-opacity-5 transition duration-400 ease-in-out"
+              ? "dark:bg-white dark:bg-opacity-20 bg-gray-300"
+              : "dark:hover:bg-white dark:hover:bg-opacity-5 transition duration-400 ease-in-out hover:bg-gray-100"
           }`}
           onClick={handleDropDownClose}
         >
           <img src={price_list} alt="" className="w-4" />
           <Link to={"/user/price-list"}>
-            <p className="cursor-pointer">Price List</p>
+            <p className="cursor-pointer dark:text-white text-primary">
+              Price List
+            </p>
           </Link>
         </div>
         <div
-          className="hover:bg-white hover:bg-opacity-5 max-w-[13rem] transition duration-400 ease-in-out py-[.7rem] gap-3 rounded-xl flex items-center font-bold text-white px-4 mt-4"
+          className="dark:hover:bg-white dark:hover:bg-opacity-5 hover:bg-gray-100 max-w-[13rem] transition duration-400 ease-in-out py-[.7rem] gap-3 rounded-xl flex items-center font-bold text-white px-4 mt-4"
           onClick={logoutUser}
         >
           <img src={logout} alt="" className="w-4" />
-          <p className="cursor-pointer">Log Out</p>
+          <p className="cursor-pointer dark:text-white text-primary">Log Out</p>
         </div>
       </div>
     </div>
