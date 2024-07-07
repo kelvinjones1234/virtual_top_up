@@ -6,6 +6,12 @@ import GeneralRight from "./GeneralRight";
 import { ProductContext } from "../context/ProductContext";
 import { Link } from "react-router-dom";
 
+const selectStyle =
+  "custom-select dark:bg-[#18202F] bg-white sm:w-[40vw] transition duration-450 ease-in-out mb-2 w-full text-primary dark:text-white py-1 px-4 h-[3.5rem] text-[1.2rem] rounded-2xl outline-0 border border-[#1CCEFF] dark:border-gray-700 dark:hover:border-black dark:focus:border-[#1CCEFF]";
+
+const inputStyle =
+  "dark:bg-[#18202F] bg-white sm:w-[40vw] transition duration-450 ease-in-out mb-2 w-full text-primary dark:text-white py-1 px-4 h-[3.5rem] text-[1.2rem] rounded-2xl outline-0 border border-[#1CCEFF] dark:border-gray-700 dark:hover:border-gray-500 dark:hover:border-black dark:focus:border-[#1CCEFF]";
+
 const ElectricityBill = () => {
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
@@ -42,22 +48,22 @@ const ElectricityBill = () => {
       <GeneralLeft />
       <div className="">
         <div>
-          <h2 className="font-bold font-heading_two text-white text-[1.5rem]">
+          <h2 className="font-bold font-heading_two text-primary dark:text-white text-[1.5rem]">
             Pay Electricity Bill
           </h2>
-          <div className="flex items-center text-gray-100 py-4 font-semibold">
+          <div className="flex items-center text-primary dark:text-gray-100 py-4 font-semibold">
             <Link to={"/user/dashboard"}>Dashboard</Link>{" "}
             <div className="h-1 w-1 mx-5 bg-white rounded-full"></div>
             <span className="text-gray-500">Electricity Bill</span>
           </div>
         </div>
-        <div className="flex flex-col justify-center border-[0.01rem] border-gray-900 p-5 rounded-[1.5rem] bg-opacity-15 shadow-lg shadow-indigo-950/10">
+        <div className="flex flex-col justify-center border-[0.01rem] border-gray-200 dark:border-gray-900 p-5 rounded-[1.5rem] dark:bg-opacity-15 shadow-lg shadow-indigo-950/10">
           <form onSubmit={handleSubmit}>
             <div>
               <select
                 name="disco_name"
                 aria-label="Disco Name"
-                className="custom-select sm:w-[40vw] transition duration-450 ease-in-out mb-2 w-full text-white py-1 px-4 h-[3.5rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-700 hover:border-black focus:border-[#1CCEFF] bg-opacity-80"
+                className={`${selectStyle}`}
               >
                 <option value="" disabled>
                   Disco Name
@@ -71,7 +77,7 @@ const ElectricityBill = () => {
               <select
                 name="meter_type"
                 aria-label="Meter Type"
-                className="custom-select sm:w-[40vw] transition duration-450 ease-in-out my-2 w-full text-white py-1 px-4 h-[3.5rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-700 hover:border-black focus:border-[#1CCEFF] bg-opacity-80"
+                className={`${selectStyle}`}
               >
                 <option value="" disabled>
                   Disco Name
@@ -89,7 +95,7 @@ const ElectricityBill = () => {
                 name="meter_number"
                 placeholder="Meter Number"
                 aria-label="Meter Number"
-                className="transition duration-450 ease-in-out my-2 w-full text-white py-1 px-4 h-[3.5rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-700 hover:border-black focus:border-[#1CCEFF] bg-opacity-80"
+                className={`${inputStyle}`}
               />
             </div>
 
@@ -100,7 +106,7 @@ const ElectricityBill = () => {
                 placeholder="Pin"
                 aria-label="Password"
                 autoComplete="current-password"
-                className="transition duration-450 ease-in-out my-2 w-full text-white py-1 px-4 h-[3.5rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-700 hover:border-black focus:border-[#1CCEFF] bg-opacity-80"
+                className={`${inputStyle}`}
               />
             </div>
             <div>
@@ -109,12 +115,12 @@ const ElectricityBill = () => {
                 name="Amount"
                 placeholder="Amount"
                 value=""
-                className="transition duration-450 ease-in-out my-2 w-full text-white py-1 px-4 h-[3.5rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-700 bg-opacity-80"
+                className={`${inputStyle}`}
               />
             </div>
             <div className="flex flex-wrap w-full text-white justify-between text-[1rem] py-5">
               <p
-                className="text-white opacity-80 font-semibold cursor-pointer"
+                className="dark:text-white text-primary opacity-80 font-semibold"
                 onClick={handleBypass}
               >
                 Bypass IUC Number

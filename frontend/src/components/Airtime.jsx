@@ -5,6 +5,13 @@ import GeneralRight from "./GeneralRight";
 import { useState, React, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
 
+const selectStyle =
+  "custom-select dark:bg-[#18202F] bg-white sm:w-[40vw] transition duration-450 ease-in-out mb-2 w-full text-primary dark:text-white py-1 px-4 h-[3.5rem] text-[1.2rem] rounded-2xl outline-0 border border-[#1CCEFF] dark:border-gray-700 dark:hover:border-black dark:focus:border-[#1CCEFF]";
+
+const inputStyle =
+  "dark:bg-[#18202F] bg-white sm:w-[40vw] transition duration-450 ease-in-out mb-2 w-full text-primary dark:text-white py-1 px-4 h-[3.5rem] text-[1.2rem] rounded-2xl outline-0 border border-[#1CCEFF] dark:border-gray-700 dark:hover:border-gray-500 dark:hover:border-black dark:focus:border-[#1CCEFF]";
+
+
 const Airtime = () => {
   const { airtimeNetworks } = useContext(ProductContext);
   const [selectedNetwork, setSelectedNetwork] = useState("");
@@ -42,22 +49,22 @@ const Airtime = () => {
       <GeneralLeft />
       <div>
         <div>
-          <h2 className="font-bold font-heading_two text-white text-[1.5rem]">
+          <h2 className="font-bold font-heading_two text-primary dark:text-white text-[1.5rem]">
             Buy Airtime
           </h2>
-          <div className="flex items-center text-gray-100 py-4 font-semibold">
+          <div className="flex items-center text-primary dark:text-gray-100 py-4 font-semibold">
             <Link to={"/user/dashboard"}>Dashboard</Link>{" "}
             <div className="h-1 w-1 mx-5 bg-white rounded-full"></div>
             <span className="text-gray-500">Airtime</span>
           </div>
         </div>
-        <div className="flex flex-col justify-center border-[0.01rem] border-gray-900 p-5 rounded-[1.5rem] bg-opacity-15 shadow-lg shadow-indigo-950/10">
+        <div className="flex flex-col justify-center border-[0.01rem] border-gray-200 dark:border-gray-900 p-5 rounded-[1.5rem] dark:bg-opacity-15 shadow-lg shadow-indigo-950/10">
           <form>
             <div>
               <select
                 name="network"
                 aria-label="Network"
-                className="custom-select sm:w-[40vw] transition duration-450 ease-in-out mb-2 w-full text-white py-1 px-4 h-[3.5rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-700 hover:border-black focus:border-[#1CCEFF] bg-opacity-80"
+                className={`${selectStyle}`}
                 value={selectedNetwork}
                 onChange={handleNetworkChange}
               >
@@ -75,7 +82,7 @@ const Airtime = () => {
               <select
                 name="planType"
                 aria-label="Plan Type"
-                className="custom-select sm:w-[40vw] transition duration-450 ease-in-out my-2 w-full text-white py-1 px-4 h-[3.5rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-700 hover:border-black focus:border-[#1CCEFF] bg-opacity-80"
+                className={`${selectStyle}`}
                 value={selectedAirtimeType}
                 onChange={handleSelectedAirtimeTypeChange}
                 disabled={
@@ -104,7 +111,7 @@ const Airtime = () => {
                 name="phone"
                 placeholder="Phone Number"
                 aria-label="Phone number"
-                className="transition duration-450 ease-in-out my-2 w-full text-white py-1 px-4 h-[3.5rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-700 hover:border-black focus:border-[#1CCEFF] bg-opacity-80"
+                className={`${inputStyle}`}
               />
             </div>
             <div>
@@ -112,7 +119,7 @@ const Airtime = () => {
                 type="text"
                 name="amount"
                 placeholder="Amount"
-                className="transition duration-450 ease-in-out my-2 w-full text-white py-1 px-4 h-[3.5rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-700 bg-opacity-80"
+                className={`${inputStyle}`}
               />
             </div>
             <div>
@@ -122,13 +129,13 @@ const Airtime = () => {
                 placeholder="Transaction Pin"
                 aria-label="Password"
                 autoComplete="current-password"
-                className="transition duration-450 ease-in-out my-2 w-full text-white py-1 px-4 h-[3.5rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-700 hover:border-black focus:border-[#1CCEFF] bg-opacity-80"
+                className={`${inputStyle}`}
               />
             </div>
 
             <div className="flex flex-wrap w-full text-white justify-between text-[1rem] py-5">
               <p
-                className="text-white opacity-80 font-semibold cursor-pointer"
+                className="dark:text-white text-primary opacity-80 font-semibold"
                 onClick={handleBypass}
               >
                 Bypass Phone Number

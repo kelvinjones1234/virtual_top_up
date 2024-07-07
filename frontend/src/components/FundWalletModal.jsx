@@ -104,16 +104,16 @@ const FundWalletModal = ({ onClose }) => {
     <div className="fixed inset-0 flex items-center justify-center z-50">
       <div className="absolute inset-0 bg-transparent"></div>
 
-      <div className="bg-gray-600 rounded-2xl p-8 z-10 mx-auto max-w-[500px] relative">
+      <div className="bg-gray-200 dark:bg-gray-600 rounded-2xl p-8 z-10 mx-auto max-w-[500px] relative">
         <div
-          className="h-10 w-10 bg-red-500 hover:bg-red-600 transition duration-400 ease-in-out right-[-10px] bottom-[15.5rem] cursor-pointer rounded-full absolute"
+          className="h-10 w-10 bg-red-600 hover:bg-red-700 transition duration-400 ease-in-out right-[-12px] bottom-[14rem] cursor-pointer rounded-full absolute"
           onClick={onClose}
         >
           <div className="relative">
             <img
               src={close}
               alt="close"
-              className="absolute h-[1.5rem] top-2 left-[.45rem] w-[1.5rem]"
+              className="absolute h-[1.5rem] top-2 left-[.5rem] w-[1.5rem]"
             />
           </div>
         </div>

@@ -183,11 +183,24 @@ select:-webkit-autofill:focus {
 input:-moz-autofill,
 textarea:-moz-autofill,
 select:-moz-autofill {
-  background-color: #18202F !important;
+  /* background-color: #18202F !important; */
   color: #fff !important;
 }
 
 .custom-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="black" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 2.5rem;
+  /* background-color: #18202F; */
+  outline: none;
+  /* color: white; */
+}
+
+/* .dark-custom-select {
   appearance: none;
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -198,9 +211,21 @@ select:-moz-autofill {
   background-color: #18202F;
   outline: none;
   color: white;
-
 }
 
+.light-custom-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url('data:image/svg+xml;utf8,<svg fill="white" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  padding-right: 2.5rem;
+  background-color: white;
+  outline: none;
+  color: white;
+
+} */
 
 .custom-scrollbar::-webkit-scrollbar {
   height: 6px;

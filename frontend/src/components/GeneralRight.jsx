@@ -18,7 +18,9 @@ const GeneralRight = () => {
           />
         </div>
         <div className="grid justify-center text-center">
-          <p className="pt-3 pb-5 text-secondary font-bold">Godwin Praise</p>
+          <p className="pt-3 pb-5 text-primary dark:text-secondary font-bold">
+            Godwin Praise
+          </p>
           <div className="flex gap-4">
             <div className="notification h-10 w-10 rounded-full bg-gray-200 hover:bg-gray-300 dark:bg-white dark:bg-opacity-20 grid relative justify-center items-center dark:hover:bg-opacity-10 transition duration-300 ease-in-out cursor-pointer">
               <img src={notification} alt="" className="w-6" />

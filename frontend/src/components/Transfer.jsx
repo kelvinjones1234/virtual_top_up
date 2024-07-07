@@ -3,6 +3,9 @@ import axios from "axios";
 import { AuthContext } from "../context/AuthenticationContext";
 import { useWallet } from "../context/WalletContext";
 
+const inputStyle =
+  "transition duration-450 ease-in-out my-2 w-full text-primary dark:text-white py-1 px-3 h-[2.8rem] text-[1.2rem] rounded-2xl outline-0 dark:bg-[#18202F] bg-white border border-[#1CCEFF] dark:border-gray-700 dark:hover:border-gray-500 dark:hover:border-black dark:focus:border-[#1CCEFF]";
+
 const Transfer = ({ setTransferForm }) => {
   const [phoneNumber, setPhoneNumber] = useState("");
   const [amount, setAmount] = useState("");
@@ -113,7 +116,7 @@ const Transfer = ({ setTransferForm }) => {
 
   return (
     <div className="bg-primary bg-opacity-0 max-w-[208px]">
-      <div className="flex flex-col justify-center border-[0.01rem] border-gray-700 p-5 rounded-[1.5rem] bg-opacity-15 shadow-lg shadow-indigo-950/10">
+      <div className="flex flex-col justify-center border-[0.01rem] border-link dark:border-gray-700 p-5 rounded-[1.5rem] bg-opacity-15 shadow-lg shadow-indigo-950/10">
         {showMessage && (
           <div className="text-white mt-2 text-center transition-opacity duration-1000 ease-in-out opacity-100">
             {message}
@@ -126,7 +129,7 @@ const Transfer = ({ setTransferForm }) => {
             type="text"
             placeholder="Recipient Number"
             aria-label="Recipient Number"
-            className="transition duration-450 ease-in-out my-2 w-full text-white py-1 px-3 h-[2.8rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-700 hover:border-black focus:border-link bg-opacity-80"
+            className={`${inputStyle}`}
           />
 
           <input
@@ -135,7 +138,7 @@ const Transfer = ({ setTransferForm }) => {
             onChange={(e) => setAmount(e.target.value)}
             placeholder="Amount"
             aria-label="Amount"
-            className="transition duration-450 ease-in-out my-2 w-full text-white py-1 px-3 h-[2.8rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-700 hover:border-black focus:border-link bg-opacity-80"
+            className={`${inputStyle}`}
           />
 
           <input
@@ -145,7 +148,7 @@ const Transfer = ({ setTransferForm }) => {
             placeholder="Pin"
             aria-label="Pin"
             autoComplete="current-password"
-            className="transition duration-450 ease-in-out my-2 w-full text-white py-1 px-3 h-[2.8rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-700 hover:border-black focus:border-link bg-opacity-80"
+            className={`${inputStyle}`}
           />
 
           <button

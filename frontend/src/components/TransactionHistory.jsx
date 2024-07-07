@@ -64,7 +64,7 @@ const TransactionHistory = () => {
           <h2 className="font-bold font-heading_two text-white text-[1.5rem]">
             Transaction History
           </h2>
-          <div className="flex items-center text-gray-100 py-4 font-semibold">
+          <div className="flex items-center text-primay dark:text-gray-100 py-4 font-semibold">
             <Link to={"/user/dashboard"}>Dashboard</Link>{" "}
             <div className="h-1 w-1 mx-5 bg-white rounded-full"></div>
             <span className="text-gray-500">History</span>
@@ -107,7 +107,7 @@ const TransactionHistory = () => {
         </div>
         <div className="flex flex-col justify-center border-[0.01rem] border-gray-900 rounded-[.5rem] bg-opacity-15 shadow-lg shadow-indigo-950/10">
           <div className="overflow-x-auto custom-scrollbar overflow-y-auto h-auto max-h-[500px]">
-            <table className="text-white text-[.9rem] md:text-[1rem] mx-auto">
+            <table className="text-primary dark:text-white text-[.9rem] md:text-[1rem] mx-auto">
               <thead>
                 <tr className="bg-gray-600">
                   <th className="px-2 py-1 text-start rounded-tl-[.5rem] w-[15rem]">
@@ -142,8 +142,8 @@ const TransactionHistory = () => {
                       <div
                         className={`${
                           item.status_display === "Success"
-                            ? "text-green-400 bg-white bg-opacity-20"
-                            : "text-red-400 bg-white bg-opacity-20"
+                            ? "text-green-400 bg-primary bg-opacity-80 font-bold dark:bg-white dark:bg-opacity-20"
+                            : "text-red-400 bg-primary bg-opacity-80 font-bold dark:bg-white dark:bg-opacity-20"
                         } text-center rounded-[.8rem] font-bol`}
                       >
                         {item.status_display}
