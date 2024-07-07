@@ -128,8 +128,11 @@ const HomePageNavbar = ({ homeMenuToggle, setHomeMenuToggle }) => {
                 <li className="mt-4 pl-11 bg-opacity-25 flex py-2 px-2 rounded-xl">
                   <Link to={"/authentication/register"}>Register</Link>
                 </li>
+
                 <li className="mt-4 pl-11 bg-opacity-25 flex py-2 px-2 rounded-xl">
-                  Reset Password
+                  <Link to={"/user/get-password-reset-link"}>
+                    Reset Password
+                  </Link>
                 </li>
               </div>
             </ul>
