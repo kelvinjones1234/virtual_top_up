@@ -1,18 +1,15 @@
 import { createContext, React, useEffect, useState } from "react";
 import axios from "axios";
-export const ProductContext = createContext();
 
+export const ProductContext = createContext();
 const ProductProvider = ({ children }) => {
   const [dataNetworks, setDataNetworks] = useState([]);
   const [productData, setProductData] = useState([]);
   const [airtimeNetworks, setAirtimeNetworks] = useState([]);
   const [cableCategories, setCableCategories] = useState([]);
-  const [activePath, setActivePath] = useState(location.pathname);
-  const [darkMode, setDarkMode] = useState(false);
-  const [theme, setTheme] = useState("dark");
+  const [activePath] = useState(location.pathname);
 
   useEffect(() => {
-    // Fetch all data networks
     axios
       .get("http://127.0.0.1:8000/api/data-network/")
       .then((response) => setDataNetworks(response.data))
@@ -47,27 +44,11 @@ const ProductProvider = ({ children }) => {
     products();
   }, []);
 
-  const handleThemeSettings = () => {
-    setDarkMode((previous) => !previous);
-    setTheme(theme == "dark" ? "light" : "dark");
-  };
-
-  useEffect(() => {
-    theme == "dark"
-      ? document.documentElement.classList.add("dark")
-      : document.documentElement.classList.remove("dark");
-  }, [handleThemeSettings]);
-
   const contextData = {
     dataNetworks: dataNetworks,
     productData: productData,
     airtimeNetworks: airtimeNetworks,
     cableCategories: cableCategories,
-    darkMode: darkMode,
-    theme: theme,
-    setTheme: setTheme,
-    setDarkMode: setDarkMode,
-    handleThemeSettings: handleThemeSettings,
   };
   return (
     <ProductContext.Provider value={contextData}>

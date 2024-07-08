@@ -6,6 +6,8 @@ import about from "../assets/about.svg";
 import right from "../assets/right_arrow.svg";
 import bottom from "../assets/bottom_arrow.svg";
 import { Link } from "react-router-dom";
+import { RiMenu4Line } from "react-icons/ri";
+import { RiCloseLargeLine } from "react-icons/ri";
 
 const HomePageNavbar = ({ homeMenuToggle, setHomeMenuToggle }) => {
   const [sideBarAuthToggle, setSideBarAuthToggle] = useState(false);
@@ -59,12 +61,12 @@ const HomePageNavbar = ({ homeMenuToggle, setHomeMenuToggle }) => {
               </button>
             </div>
             <div className="hamburger">
-              <img
-                src={homeMenuToggle ? close : menu}
-                alt="harmburger-menu"
+              <div
                 onClick={handleHomeMenuToggle}
-                className="h-[20px] w-[20px]"
-              />
+                className="text-[25px] dark:text-white text-link"
+              >
+                {homeMenuToggle ? <RiCloseLargeLine /> : <RiMenu4Line />}
+              </div>
             </div>
           </div>
           <div className="large-screen hidden lg:pr-[6rem]">

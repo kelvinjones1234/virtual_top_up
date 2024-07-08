@@ -15,6 +15,7 @@ import Transfer from "./Transfer";
 import { AuthContext } from "../context/AuthenticationContext";
 import dark from "../assets/dark.svg";
 import light from "../assets/light.svg";
+import { GeneralContext } from "../context/GeneralContext";
 
 const GeneralSidebar = ({
   generalMenuToggle,
@@ -28,8 +29,8 @@ const GeneralSidebar = ({
     setActivePath(location.pathname);
   }, [location.pathname]);
 
-  const { productData, handleThemeSettings, darkMode, setDarkMode } =
-    useContext(ProductContext);
+  const { productData } = useContext(ProductContext);
+  const { handleThemeSettings, darkMode } = useContext(GeneralContext);
   const { logoutUser } = useContext(AuthContext);
   const [activePath, setActivePath] = useState(location.pathname);
   const [transferForm, setTransferForm] = useState(false);

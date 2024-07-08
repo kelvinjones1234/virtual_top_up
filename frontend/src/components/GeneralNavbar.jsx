@@ -7,13 +7,14 @@ import GeneralSidebar from "./GeneralSidebar";
 import dark from "../assets/dark.svg";
 import light from "../assets/light.svg";
 import { AuthContext } from "../context/AuthenticationContext";
-import { ProductContext } from "../context/ProductContext";
+import { GeneralContext } from "../context/GeneralContext";
+import { RiMenu4Line } from "react-icons/ri";
+import { RiCloseLargeLine } from "react-icons/ri";
 
 const GeneralNavbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { user } = useContext(AuthContext);
-  const { darkMode, setDarkMode, handleThemeSettings } =
-    useContext(ProductContext);
+  const { darkMode, handleThemeSettings } = useContext(GeneralContext);
 
   const [generalMenuToggle, setGeneralMenuToggle] = useState(false);
 
@@ -89,12 +90,12 @@ const GeneralNavbar = () => {
               <div className="red-point h-3 w-3 bg-red-600 absolute bottom-3 rounded-full left-3 bottom-6"></div>
             </div>
             <div className="hamburger ">
-              <img
-                src={generalMenuToggle ? close : menu}
-                alt="hamburger-menu"
+              <div
                 onClick={handleGeneralMenuToggle}
-                className="h-[30px] w-[30px]"
-              />
+                className="text-[25px] dark:text-white text-link"
+              >
+                {generalMenuToggle ? <RiCloseLargeLine /> : <RiMenu4Line />}
+              </div>
             </div>
           </div>
         </div>
