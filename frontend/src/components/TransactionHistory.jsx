@@ -61,12 +61,12 @@ const TransactionHistory = () => {
       <GeneralLeft />
       <div className="min-w-[349.20px] pr-2 mx-auto">
         <div>
-          <h2 className="font-bold font-heading_two text-white text-[1.5rem]">
+          <h2 className="font-bold font-heading_two text-primary dark:text-white text-[1.5rem]">
             Transaction History
           </h2>
           <div className="flex items-center text-primay dark:text-gray-100 py-4 font-semibold">
             <Link to={"/user/dashboard"}>Dashboard</Link>{" "}
-            <div className="h-1 w-1 mx-5 bg-white rounded-full"></div>
+            <div className="h-1 w-1 mx-5 bg-primary dark:bg-white rounded-full"></div>
             <span className="text-gray-500">History</span>
           </div>
         </div>
@@ -75,7 +75,7 @@ const TransactionHistory = () => {
             <select
               name="category"
               id="category"
-              className="custom-select transition duration-450 ease-in-out mb-2 w-full text-white py-[0.05rem] px-2 bg-[#18202F] rounded-[.5rem] outline-0 border border-gray-700 hover:border-black focus:border-link bg-opacity-80"
+              className="custom-select transition duration-450 ease-in-out mb-2 w-full text-primary dark:text-white py-[0.05rem] px-2 bg-white dark:bg-[#18202F] rounded-[.5rem] outline-0 border border-gray-700 hover:border-black focus:border-link bg-opacity-80"
               onChange={(e) => setCategory(e.target.value)}
             >
               <option value="">All category</option>
@@ -88,7 +88,7 @@ const TransactionHistory = () => {
             <select
               name="status"
               id="status"
-              className="custom-select transition duration-450 ease-in-out mb-2 w-full text-white py-[0.05rem] px-2 bg-[#18202F] rounded-[.5rem] outline-0 border border-gray-700 hover:border-black focus:border-link bg-opacity-80"
+              className="custom-select transition duration-450 ease-in-out mb-2 w-full text-primary dark:text-white py-[0.05rem] px-2 bg-white dark:bg-[#18202F] rounded-[.5rem] outline-0 border border-gray-700 hover:border-black focus:border-link bg-opacity-80"
               onChange={(e) => setStatus(e.target.value)}
             >
               <option value="">All Status</option>
@@ -101,7 +101,7 @@ const TransactionHistory = () => {
           <input
             type="search"
             placeholder="Search for transaction"
-            className="outline-0 text-white py-[0.05rem] px-2 bg-[#18202F] rounded-[.5rem] border border-gray-700"
+            className="outline-0 text-primary focus:border-link dark:text-white py-[0.05rem] px-2 bg-white dark:bg-[#18202F] rounded-[.5rem] border border-gray-700"
             onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
@@ -109,7 +109,7 @@ const TransactionHistory = () => {
           <div className="overflow-x-auto custom-scrollbar overflow-y-auto h-auto max-h-[500px]">
             <table className="text-primary dark:text-white text-[.9rem] md:text-[1rem] mx-auto">
               <thead>
-                <tr className="bg-gray-600">
+                <tr className="dark:bg-gray-600 bg-gray-200">
                   <th className="px-2 py-1 text-start rounded-tl-[.5rem] w-[15rem]">
                     Reference
                   </th>
@@ -127,8 +127,15 @@ const TransactionHistory = () => {
                 </tr>
               </thead>
               <tbody>
-                {filteredTransactions.map((item) => (
-                  <tr className="" key={item.transaction_ref_no}>
+                {filteredTransactions.map((item, index) => (
+                  <tr
+                    className={`transition-all duration-400 ease-in-out ${
+                      index % 2 == 0
+                        ? "hover:opacity-85"
+                        : "bg-gray-100 dark:bg-gray-500 hover:opacity-85"
+                    }`}
+                    key={item.transaction_ref_no}
+                  >
                     <td className="px-2 py-[1rem]">
                       {item.transaction_ref_no}
                     </td>

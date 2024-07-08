@@ -54,7 +54,7 @@ const GeneralNavbar = () => {
       <div
         className={`p-4 lg:px-0 flex justify-between z-[10] fixed top-0 w-full transition-colors duration-200 ${
           isScrolled
-            ? "dark:bg-primary dark:bg-opacity-95 bg-white bg-opacity-95 shadow"
+            ? "dark:bg-primary bg-gray-50 shadow"
             : "bg-transparent"
         }`}
       >
@@ -62,7 +62,7 @@ const GeneralNavbar = () => {
           <div className="left flex gap-6 items-center">
             <div className="flex items-center gap-1">
               <Link to={"/"}>
-                <div className="logo font-heading_one text-green-500 border border-green-500 px-2 text-[.7rem] px-2 dark:border-white border-primary rounded-[.5rem] font-bold">
+                <div className="logo font-heading_one text-green-500 border border-green-500 px-2 text-[.7rem] px-2 rounded-[.5rem] font-bold">
                   Atom
                 </div>
               </Link>

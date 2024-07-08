@@ -64,9 +64,9 @@ const GeneralSidebar = ({
         onClick={(e) => e.stopPropagation()} // Prevent click event propagation to overlay
       >
         <div className="flex justify-between mr-9">
-          <div className="flex items-center gap-1 mt-3">
+          <div className="flex items-center gap-1 mt-1">
             <Link to={"/"}>
-              <div className="logo font-heading_one text-green-500 border  dark:border-green-500 px-2 text-[.7rem] px-2 border-green-500 rounded-[.5rem] font-bold">
+              <div className="logo font-heading_one text-green-500 border dark:border-green-500 px-2 text-[.7rem] px-2 border-green-500 rounded-[.5rem] font-bold">
                 Atom
               </div>
             </Link>

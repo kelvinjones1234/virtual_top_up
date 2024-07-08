@@ -11,7 +11,6 @@ const selectStyle =
 const inputStyle =
   "dark:bg-[#18202F] bg-white sm:w-[40vw] transition duration-450 ease-in-out mb-2 w-full text-primary dark:text-white py-1 px-4 h-[3.5rem] text-[1.2rem] rounded-2xl outline-0 border border-[#1CCEFF] dark:border-gray-700 dark:hover:border-gray-500 dark:hover:border-black dark:focus:border-[#1CCEFF]";
 
-
 const Airtime = () => {
   const { airtimeNetworks } = useContext(ProductContext);
   const [selectedNetwork, setSelectedNetwork] = useState("");
@@ -54,7 +53,7 @@ const Airtime = () => {
           </h2>
           <div className="flex items-center text-primary dark:text-gray-100 py-4 font-semibold">
             <Link to={"/user/dashboard"}>Dashboard</Link>{" "}
-            <div className="h-1 w-1 mx-5 bg-white rounded-full"></div>
+            <div className="h-1 w-1 mx-5 bg-primary dark:bg-white rounded-full"></div>
             <span className="text-gray-500">Airtime</span>
           </div>
         </div>

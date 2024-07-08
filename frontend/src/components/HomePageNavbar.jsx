@@ -98,7 +98,16 @@ const HomePageNavbar = ({ homeMenuToggle, setHomeMenuToggle }) => {
         onClick={(e) => e.stopPropagation()} // Prevent click event propagation to overlay
       >
         <ul className="w-[13rem]">
-          <li className="logo mb-9">Atom</li>
+          <div className="flex items-center gap-1 mt-[.55rem] mb-9">
+            <Link to={"/"}>
+              <div className="logo font-heading_one text-green-500 border border-green-500 px-2 text-[.7rem] px-2 border-white rounded-[.5rem] font-bold">
+                Atom
+              </div>
+            </Link>
+            <div className="h-3 w-3 bg-green-500 rounded-full"></div>
+            <div className="h-3 w-3 bg-green-500 rounded-full"></div>
+            <div className="h-3 w-3 bg-green-500 rounded-full"></div>
+          </div>
           <ul>
             <li
               onClick={handleSideBarAuthToggle}
