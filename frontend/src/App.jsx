@@ -16,6 +16,7 @@ import { WalletProvider } from "./context/WalletContext";
 import PasswordResetRequestPage from "./pages/PasswordResetRequestPage";
 import PasswordResetPage from "./pages/PasswordResetPage";
 import GeneralProvider from "./context/GeneralContext";
+import ParticleComponent from "./components/ParticleComponent";
 
 function App() {
   return (
@@ -25,9 +26,8 @@ function App() {
           <ProductProvider>
             <WalletProvider>
               <div>
-                <div
-                  className={`bg-white dark:bg-dark-custom-gradient w-full z-[-2] min-w-[150px] fixed top-0 left-0 min-h-screen`}
-                ></div>
+                <div className="bg-white dark:bg-dark-custom-gradient w-full z-[-2] min-w-[150px] fixed top-0 left-0 min-h-screen"></div>
+                <ParticleComponent />
                 <Routes>
                   <Route path="/" element={<HomePage />} />
                   <Route

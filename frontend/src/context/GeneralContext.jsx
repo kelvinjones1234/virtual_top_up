@@ -5,6 +5,8 @@ export const GeneralContext = createContext();
 const GeneralProvider = ({ children }) => {
   const [darkMode, setDarkMode] = useState(false);
   const [theme, setTheme] = useState("dark");
+  const [loading, setLoading] = useState(false);
+
   const handleThemeSettings = () => {
     setDarkMode((previous) => !previous);
     setTheme(theme == "dark" ? "light" : "dark");
@@ -19,6 +21,8 @@ const GeneralProvider = ({ children }) => {
   const contextData = {
     darkMode: darkMode,
     theme: theme,
+    loading: loading,
+    setLoading: setLoading,
     setTheme: setTheme,
     setDarkMode: setDarkMode,
     handleThemeSettings: handleThemeSettings,

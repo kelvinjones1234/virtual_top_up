@@ -16,6 +16,8 @@ const inputStyle =
 const RegisterationPage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const { registerUser } = useContext(AuthContext);
+  const { setLoading } = useContext(GeneralContext);
+
   const [formData, setFormData] = useState({
     first_name: "",
     last_name: "",
