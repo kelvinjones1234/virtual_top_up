@@ -5,7 +5,7 @@ import GeneralLeft from "./GeneralLeft";
 import GeneralRight from "./GeneralRight";
 import { ProductContext } from "../context/ProductContext";
 import { Link } from "react-router-dom";
-
+import { GeneralContext } from "../context/GeneralContext";
 const selectStyle =
   "custom-select dark:bg-[#18202F] bg-white sm:w-[40vw] transition duration-450 ease-in-out mb-2 w-full text-primary dark:text-white py-1 px-4 h-[3.5rem] text-[1.2rem] rounded-2xl outline-0 border border-[#1CCEFF] dark:border-gray-700 dark:hover:border-black dark:focus:border-[#1CCEFF]";
 
@@ -23,12 +23,13 @@ const Data = () => {
   const [password, setPassword] = useState("");
   const [price, setPrice] = useState("");
   const [bypassPhoneNumber, setBypassPhoneNumber] = useState(false);
+  const { api } = useContext(GeneralContext);
 
   useEffect(() => {
     if (selectedNetwork) {
       // Fetch plan types based on selected network
-      axios
-        .get(`http://127.0.0.1:8000/api/data/plan-type/${selectedNetwork}/`)
+      api
+        .get(`data/plan-type/${selectedNetwork}/`)
         .then((response) => setPlanTypes(response.data))
         .catch((error) => console.error("Error fetching plan types:", error));
     }
@@ -37,10 +38,8 @@ const Data = () => {
   useEffect(() => {
     if (selectedPlanType && selectedNetwork) {
       // Fetch data plans based on selected network and plan type
-      axios
-        .get(
-          `http://127.0.0.1:8000/api/data/plans/${selectedNetwork}/${selectedPlanType}/`
-        )
+      api
+        .get(`data/plans/${selectedNetwork}/${selectedPlanType}/`)
         .then((response) => setDataPlans(response.data))
         .catch((error) => console.error("Error fetching data plans:", error));
     }

@@ -5,6 +5,7 @@ import GeneralLeft from "./GeneralLeft";
 import GeneralRight from "./GeneralRight";
 import { ProductContext } from "../context/ProductContext";
 import { Link } from "react-router-dom";
+import { GeneralContext } from "../context/GeneralContext";
 
 const selectStyle =
   "custom-select dark:bg-[#18202F] bg-white sm:w-[40vw] transition duration-450 ease-in-out mb-2 w-full text-primary dark:text-white py-1 px-4 h-[3.5rem] text-[1.2rem] rounded-2xl outline-0 border border-[#1CCEFF] dark:border-gray-700 dark:hover:border-black dark:focus:border-[#1CCEFF]";
@@ -13,6 +14,8 @@ const inputStyle =
   "dark:bg-[#18202F] bg-white sm:w-[40vw] transition duration-450 ease-in-out mb-2 w-full text-primary dark:text-white py-1 px-4 h-[3.5rem] text-[1.2rem] rounded-2xl outline-0 border border-[#1CCEFF] dark:border-gray-700 dark:hover:border-gray-500 dark:hover:border-black dark:focus:border-[#1CCEFF]";
 
 const CableSub = () => {
+  const { api } = useContext(GeneralContext);
+
   const { cableCategories } = useContext(ProductContext);
   const [phone, setPhone] = useState("");
   const [password, setPassword] = useState("");
@@ -46,8 +49,8 @@ const CableSub = () => {
 
   useEffect(() => {
     if (selectedCableCategory) {
-      axios
-        .get(`http://127.0.0.1:8000/api/category/${selectedCableCategory}/`)
+      api
+        .get(`category/${selectedCableCategory}/`)
         .then((response) => {
           setCablePlans(response.data);
         })

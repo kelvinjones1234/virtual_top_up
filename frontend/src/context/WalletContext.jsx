@@ -1,25 +1,24 @@
 import React, { createContext, useContext, useState, useEffect } from "react";
 import axios from "axios";
 import { AuthContext } from "./AuthenticationContext";
+import { GeneralContext } from "./GeneralContext";
 
 const WalletContext = createContext();
 
 export const WalletProvider = ({ children }) => {
   const [walletData, setWalletData] = useState({ balance: 0 });
   const { user, authTokens } = useContext(AuthContext);
+  const { api } = useContext(GeneralContext);
 
   useEffect(() => {
     const fetchWalletData = async () => {
       try {
-        const response = await axios.get(
-          `http://127.0.0.1:8000/api/wallet/${user.username}/`,
-          {
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: `Bearer ${authTokens.access}`,
-            },
-          }
-        );
+        const response = await api.get(`wallet/${user.username}/`, {
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${authTokens.access}`,
+          },
+        });
         setWalletData(response.data);
       } catch (error) {
         console.error(
@@ -38,7 +37,6 @@ export const WalletProvider = ({ children }) => {
       balance: newBalance,
     }));
   };
-
 
   return (
     <WalletContext.Provider value={{ walletData, updateWalletBalance }}>

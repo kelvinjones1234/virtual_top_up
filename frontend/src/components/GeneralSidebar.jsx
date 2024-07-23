@@ -17,11 +17,7 @@ import dark from "../assets/dark.svg";
 import light from "../assets/light.svg";
 import { GeneralContext } from "../context/GeneralContext";
 
-const GeneralSidebar = ({
-  generalMenuToggle,
-  setGeneralMenuToggle,
-  handleGeneralMenuToggle,
-}) => {
+const GeneralSidebar = ({ generalMenuToggle, handleGeneralMenuToggle }) => {
   const [generalSideBarAuthToggle, setGeneralSideBarAuthToggle] =
     useState(false);
 
@@ -31,7 +27,7 @@ const GeneralSidebar = ({
 
   const { productData } = useContext(ProductContext);
   const { handleThemeSettings, darkMode } = useContext(GeneralContext);
-  const { logoutUser } = useContext(AuthContext);
+  const { logoutUser, userData } = useContext(AuthContext);
   const [activePath, setActivePath] = useState(location.pathname);
   const [transferForm, setTransferForm] = useState(false);
 
@@ -91,8 +87,10 @@ const GeneralSidebar = ({
                 <p>P</p>
               </div>
               <p>
-                PRAISE <br />
-                <span className="text-[.7rem] font-light">08141772672</span>
+                {userData.first_name.toUpperCase()} <br />
+                <span className="text-[.7rem] font-light">
+                  {userData.phone_number}
+                </span>
               </p>
             </div>
             <ul>

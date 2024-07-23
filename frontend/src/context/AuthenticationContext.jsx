@@ -1,11 +1,13 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
+import { GeneralContext } from "./GeneralContext";
 
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
+  const { api } = useContext(GeneralContext);
   const [userError, setUserError] = useState("");
   const navigate = useNavigate();
 
@@ -20,6 +22,31 @@ const AuthProvider = ({ children }) => {
       : null
   );
 
+  const [userData, setUserData] = useState({
+    username: "",
+    first_name: "",
+    last_name: "",
+    phone_number: "",
+    transaction_pin: "",
+  });
+
+  useEffect(() => {
+    // Fetch user data
+    api
+      .get("user/", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + String(authTokens.access),
+        },
+      })
+      .then((response) => {
+        setUserData(response.data);
+      })
+      .catch((error) => {
+        console.error("There was an error fetching the user data!", error);
+      });
+  }, [authTokens.access]);
+
   useEffect(() => {
     const interval = setInterval(() => {
       if (authTokens) {
@@ -32,8 +59,8 @@ const AuthProvider = ({ children }) => {
 
   const loginUser = async (username, password) => {
     try {
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/token/",
+      const response = await api.post(
+        "token/",
         {
           username: username.toLowerCase(),
           password: password,
@@ -67,15 +94,11 @@ const AuthProvider = ({ children }) => {
 
   const registerUser = async (formData) => {
     try {
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/authentication/register/",
-        formData,
-        {
-          headers: {
-            "Content-Type": "application/json",
-          },
-        }
-      );
+      const response = await api.post("authentication/register/", formData, {
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
 
       if (response.status === 201) {
         navigate("/authentication/login");
@@ -92,8 +115,8 @@ const AuthProvider = ({ children }) => {
 
   const refreshToken = async () => {
     try {
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/token/refresh/",
+      const response = await api.post(
+        "token/refresh/",
         { refresh: authTokens.refresh },
         {
           headers: {
@@ -131,6 +154,8 @@ const AuthProvider = ({ children }) => {
     logoutUser,
     registerUser,
     setUserError,
+    setUserData,
+    userData,
     user,
     userError,
     authTokens,

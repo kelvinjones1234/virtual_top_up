@@ -1,6 +1,7 @@
 import { useContext, useState, useEffect, React } from "react";
 import { AuthContext } from "../context/AuthenticationContext";
 import { Link } from "react-router-dom";
+import { GeneralContext } from "../context/GeneralContext";
 
 const LeftSide = () => (
   <div className="left mt-[6.8rem] leading-[3rem] relative hidden justify-center items-center sm:flex h-[363.98px] shadow-lg shadow-indigo-900/20 bg-opacity-50 rounded-2xl w-[20rem] bg-black text-white">
@@ -176,18 +177,6 @@ const RegisterationPage = () => {
                   />
                 </div>
               </div>
-              {/* <div className="flex flex-wrap w-full text-white justify-between text-[1rem] text-gray-300 py-5">
-                <div className="left flex place-items-center">
-                  <input
-                    type="checkbox"
-                    className="h-4 w-4 md:h-5 md:w-5 mr-3"
-                  />
-                  <div className="mr-6">Remember me</div>
-                </div>
-                <p className="right text-link font-semibold cursor-pointer hover:text-sky-500 transition duration-450 ease-in-out">
-                  Forgot password?
-                </p>
-              </div> */}
               <div className="ss:pb-16">
                 <button
                   className="my-6 w-full p-1 h-[3.2rem] bg-link text-black rounded-2xl bg-opacity-90 font-semibold hover:bg-sky-500 transition duration-450 ease-in-out"

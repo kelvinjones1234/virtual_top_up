@@ -5,7 +5,7 @@ import GeneralLeft from "./GeneralLeft";
 import GeneralRight from "./GeneralRight";
 import { ProductContext } from "../context/ProductContext";
 import { Link } from "react-router-dom";
-
+import { GeneralContext } from "../context/GeneralContext";
 const selectStyle =
   "custom-select dark:bg-[#18202F] bg-white sm:w-[40vw] transition duration-450 ease-in-out mb-2 w-full text-primary dark:text-white py-1 px-4 h-[3.5rem] text-[1.2rem] rounded-2xl outline-0 border border-[#1CCEFF] dark:border-gray-700 dark:hover:border-black dark:focus:border-[#1CCEFF]";
 
@@ -19,6 +19,8 @@ const ElectricityBill = () => {
   const [price, setPrice] = useState("");
   const [bypassPhoneNumber, setBypassPhoneNumber] = useState(false);
   const [discos, setDiscos] = useState([]);
+  const { api } = useContext(GeneralContext);
+
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -30,15 +32,15 @@ const ElectricityBill = () => {
   };
 
   useEffect(() => {
-    axios
-      .get("http://127.0.0.1:8000/api/electricity-bill/")
+    api
+      .get("electricity-bill/")
       .then((response) => setDiscos(response.data))
       .catch((error) => console.error("Error Fetching Discos", error));
   }, []);
 
   useEffect(() => {
-    axios
-      .get("http://127.0.0.1:8000/api/electricity-settings/")
+    api
+      .get("electricity-settings/")
       .then((response) => setElectricitySettings(response.data))
       .catch((error) => console.error("Error Meter Type", error));
   }, []);

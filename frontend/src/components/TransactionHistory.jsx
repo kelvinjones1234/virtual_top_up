@@ -4,6 +4,7 @@ import GeneralRight from "./GeneralRight";
 import { Link } from "react-router-dom";
 import { AuthContext } from "../context/AuthenticationContext";
 import axios from "axios";
+import { GeneralContext } from "../context/GeneralContext";
 
 const TransactionHistory = () => {
   const [transactionHistory, setTransactionHistory] = useState([]);
@@ -13,11 +14,13 @@ const TransactionHistory = () => {
   const [status, setStatus] = useState("");
   const [searchTerm, setSearchTerm] = useState("");
   const { user, authTokens } = useContext(AuthContext);
+  const { api } = useContext(GeneralContext);
+
 
   useEffect(() => {
     try {
-      axios
-        .get("http://127.0.0.1:8000/api/transactions/", {
+      api
+        .get("transactions/", {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${authTokens.access}`,

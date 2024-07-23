@@ -2,11 +2,14 @@ import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { AuthContext } from "../context/AuthenticationContext";
 import { useWallet } from "../context/WalletContext";
+import { GeneralContext } from "../context/GeneralContext";
 
 const inputStyle =
   "transition duration-450 ease-in-out my-2 w-full text-primary dark:text-white py-1 px-3 h-[2.8rem] text-[1.2rem] rounded-2xl outline-0 dark:bg-[#18202F] bg-white border border-[#1CCEFF] dark:border-gray-700 dark:hover:border-gray-500 dark:hover:border-black dark:focus:border-[#1CCEFF]";
 
 const Transfer = ({ setTransferForm }) => {
+  const {api} = useContext(GeneralContext)
+
   const [phoneNumber, setPhoneNumber] = useState("");
   const [amount, setAmount] = useState("");
   const [pin, setPin] = useState("");
@@ -43,8 +46,8 @@ const Transfer = ({ setTransferForm }) => {
 
     try {
       // Fetch the wallet data
-      const walletResponse = await axios.get(
-        `http://127.0.0.1:8000/api/wallet/${user.username}/`,
+      const walletResponse = await api.get(
+        `wallet/${user.username}/`,
         {
           headers: {
             "Content-Type": "application/json",
@@ -79,8 +82,8 @@ const Transfer = ({ setTransferForm }) => {
       }
 
       // Perform the transfer
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/transfer/",
+      const response = await api.post(
+        "transfer/",
         {
           phone_number: phoneNumber,
           amount: amount,

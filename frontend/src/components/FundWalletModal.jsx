@@ -3,12 +3,14 @@ import close from "../assets/close.svg";
 import { useWallet } from "../context/WalletContext";
 import { AuthContext } from "../context/AuthenticationContext";
 import axios from "axios";
+import { GeneralContext } from "../context/GeneralContext";
 
 const FundWalletModal = ({ onClose }) => {
   const { authTokens, user } = useContext(AuthContext);
   const { walletData, updateWalletBalance } = useWallet();
   const [amount, setAmount] = useState("");
   const [errorMessage, setErrorMessage] = useState("");
+  const { api } = useContext(GeneralContext);
 
   const handleUpdateBalance = () => {
     if (Number(amount) < 0) {
@@ -78,7 +80,7 @@ const FundWalletModal = ({ onClose }) => {
 
         axios
           .put(
-            `http://127.0.0.1:8000/api/fund-wallet/${user.username}/`,
+            `fund-wallet/${user.username}/`,
             {
               balance: amount,
             },

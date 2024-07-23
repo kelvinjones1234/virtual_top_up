@@ -4,6 +4,7 @@ import GeneralLeft from "./GeneralLeft";
 import GeneralRight from "./GeneralRight";
 import { useState, React, useContext, useEffect } from "react";
 import { Link } from "react-router-dom";
+import { GeneralContext } from "../context/GeneralContext";
 
 const selectStyle =
   "custom-select dark:bg-[#18202F] bg-white sm:w-[40vw] transition duration-450 ease-in-out mb-2 w-full text-primary dark:text-white py-1 px-4 h-[3.5rem] text-[1.2rem] rounded-2xl outline-0 border border-[#1CCEFF] dark:border-gray-700 dark:hover:border-black dark:focus:border-[#1CCEFF]";
@@ -12,6 +13,7 @@ const inputStyle =
   "dark:bg-[#18202F] bg-white sm:w-[40vw] transition duration-450 ease-in-out mb-2 w-full text-primary dark:text-white py-1 px-4 h-[3.5rem] text-[1.2rem] rounded-2xl outline-0 border border-[#1CCEFF] dark:border-gray-700 dark:hover:border-gray-500 dark:hover:border-black dark:focus:border-[#1CCEFF]";
 
 const Airtime = () => {
+  const { api } = useContext(GeneralContext);
   const { airtimeNetworks } = useContext(ProductContext);
   const [selectedNetwork, setSelectedNetwork] = useState("");
   const [airtimeTypes, setAirtimeTypes] = useState([]);
@@ -30,10 +32,8 @@ const Airtime = () => {
 
   useEffect(() => {
     if (selectedNetwork) {
-      axios
-        .get(
-          `http://127.0.0.1:8000/api/airtime/airtime-type/${selectedNetwork}/`
-        )
+      api
+        .get(`airtime/airtime-type/${selectedNetwork}/`)
         .then((response) => setAirtimeTypes(response.data))
         .catch((error) => console.error("Error fetching plan types:", error));
     }

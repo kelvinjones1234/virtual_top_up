@@ -27,7 +27,7 @@ const UserDashBoard = () => {
 
       {/* middle layer */}
       <div className="flex flex-col justify-center text-[.8rem] md:text-[1rem]">
-        <div className="rounded-[1rem] bg-white dark:bg-primary p-4 xs:p-8 text-primary dark:text-white shadow-lg shadow-indigo-900/20 border-5 border border-gray-200">
+        <div className="rounded-[1rem] bg-white dark:bg-primary p-4 xs:p-8 text-primary dark:text-white shadow-lg shadow-indigo-900/20 border-5 border border-gray-200 dark:border-0">
           <div className="flex justify-between items-center">
             <p className="pb-6">Available Balance</p>
             <Link to={"/user/dashboard/transactions"}>
