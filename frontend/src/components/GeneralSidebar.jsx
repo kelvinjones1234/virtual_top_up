@@ -27,7 +27,7 @@ const GeneralSidebar = ({ generalMenuToggle, handleGeneralMenuToggle }) => {
 
   const { productData } = useContext(ProductContext);
   const { handleThemeSettings, darkMode } = useContext(GeneralContext);
-  const { logoutUser, userData } = useContext(AuthContext);
+  const { logoutUser, user } = useContext(AuthContext);
   const [activePath, setActivePath] = useState(location.pathname);
   const [transferForm, setTransferForm] = useState(false);
 
@@ -87,9 +87,9 @@ const GeneralSidebar = ({ generalMenuToggle, handleGeneralMenuToggle }) => {
                 <p>P</p>
               </div>
               <p>
-                {userData.first_name.toUpperCase()} <br />
+                {user.first_name.toUpperCase()} <br />
                 <span className="text-[.7rem] font-light">
-                  {userData.phone_number}
+                  {user.phone_number}
                 </span>
               </p>
             </div>

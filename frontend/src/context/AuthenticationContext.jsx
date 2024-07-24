@@ -7,9 +7,9 @@ import { GeneralContext } from "./GeneralContext";
 export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
-  const { api } = useContext(GeneralContext);
   const [userError, setUserError] = useState("");
   const navigate = useNavigate();
+  const { api } = useContext(GeneralContext);
 
   const [authTokens, setAuthTokens] = useState(
     localStorage.getItem("authTokens")
@@ -21,31 +21,6 @@ const AuthProvider = ({ children }) => {
       ? jwtDecode(JSON.parse(localStorage.getItem("authTokens")).access)
       : null
   );
-
-  const [userData, setUserData] = useState({
-    username: "",
-    first_name: "",
-    last_name: "",
-    phone_number: "",
-    transaction_pin: "",
-  });
-
-  useEffect(() => {
-    // Fetch user data
-    api
-      .get("user/", {
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + String(authTokens.access),
-        },
-      })
-      .then((response) => {
-        setUserData(response.data);
-      })
-      .catch((error) => {
-        console.error("There was an error fetching the user data!", error);
-      });
-  }, [authTokens.access]);
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -115,8 +90,8 @@ const AuthProvider = ({ children }) => {
 
   const refreshToken = async () => {
     try {
-      const response = await api.post(
-        "token/refresh/",
+      const response = await axios.post(
+        "http://127.0.0.1:8000/api/token/refresh/",
         { refresh: authTokens.refresh },
         {
           headers: {
@@ -153,11 +128,9 @@ const AuthProvider = ({ children }) => {
     loginUser,
     logoutUser,
     registerUser,
-    setUserError,
-    setUserData,
-    userData,
     user,
     userError,
+    setUserError,
     authTokens,
   };
 
