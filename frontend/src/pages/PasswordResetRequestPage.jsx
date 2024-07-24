@@ -71,7 +71,7 @@ const PasswordResetRequestPage = () => {
               <p>
                 Already have an account?{" "}
                 <span className="text-link font-semibold cursor-pointer">
-                  <Link to={"/authentication/register"}>Login</Link>
+                  <Link to={"/authentication/login"}>Login</Link>
                 </span>
               </p>
             </div>
