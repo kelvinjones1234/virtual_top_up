@@ -1,13 +1,14 @@
-import whatsapp from "../assets/whatsapp.svg";
-import twitter from "../assets/twitter.svg";
-import instagram from "../assets/instagram.svg";
-import facebook from "../assets/facebook.svg";
+import whatsapp from "../assets/whatsapp.png";
+import twitter from "../assets/twitter.png";
+import instagram from "../assets/instagram.png";
+import facebook from "../assets/facebook.png";
 import { Link } from "react-router-dom";
 
 const socials = [
   { src: twitter, alt: "Twitter" },
   { src: facebook, alt: "Facebook" },
   { src: instagram, alt: "Instagram" },
+  { src: whatsapp, alt: "Whatsapp" }
 ];
 
 const Footer = () => {
@@ -32,7 +33,7 @@ const Footer = () => {
           <h3 className="text-primary dark:text-link font-heading_two pt-4 text-2xl font-bold">
             Socials
           </h3>
-          <div className="icons flex justify-center">
+          <div className="icons flex justify-center mt-2">
             {socials.map((social, index) => (
               <img
                 key={index}
