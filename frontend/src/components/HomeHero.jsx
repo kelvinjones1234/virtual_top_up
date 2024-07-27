@@ -7,7 +7,7 @@ const HomeHero = () => {
   const { user, logoutUser } = useContext(AuthContext);
   return (
     <div className="">
-      <div className="authentication bg-bg_one bg-contain md:bg-cover bg-center w-full min-h-screen bg-no-repeat fixed z-[-1]"></div>
+      <div className="authentication bg-bg_one bg-contain md:bg-cover bg-center absolute w-full min-h-screen bg-no-repeat fixed z-[-1]"></div>
       <div className="mx-auto px-4 ss:px-[5rem] w-full md:px-[4rem] pt-[22vh] lg:px-[8rem]">
         {/* <div className="bg-bg_one md:h-screen bg-contain sm:bg-cover bg-center bg-no-repeat"></div> */}
         <div className="text-white text-center sm:text-left">
