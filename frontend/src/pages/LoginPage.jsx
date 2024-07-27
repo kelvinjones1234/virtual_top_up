@@ -3,12 +3,14 @@ import { AuthContext } from "../context/AuthenticationContext";
 import { Link } from "react-router-dom";
 import SubmitButton from "../components/SubmitButton";
 import { GeneralContext } from "../context/GeneralContext";
+import simag from "../assets/vtu3.png";
 
 const LeftSide = () => (
   <div className="left leading-[3rem] relative hidden justify-center items-center sm:flex h-[364px] shadow-lg shadow-indigo-900/20 bg-opacity-50 rounded-2xl w-[20rem] bg-black text-white">
-    <div className="atom-logo text-[6vw] font-bold text-gradient absolute">
+    {/* <div className="atom-logo text-[6vw] font-bold text-gradient absolute">
       Atom <br /> <span className="text-[1.5vw]">Virtual Top Up</span>
-    </div>
+    </div> */}
+    <img src={simag} alt="" className="h-[365px]"/>
   </div>
 );
 
