@@ -1,5 +1,5 @@
 import whatsapp from "../assets/whatsapp.png";
-import twitter from "../assets/twitter.png";
+import twitter from "../assets/twitter1.png";
 import instagram from "../assets/instagram.png";
 import facebook from "../assets/facebook.png";
 import { Link } from "react-router-dom";
