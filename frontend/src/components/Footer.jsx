@@ -8,7 +8,7 @@ const socials = [
   { src: twitter, alt: "Twitter" },
   { src: facebook, alt: "Facebook" },
   { src: instagram, alt: "Instagram" },
-  { src: whatsapp, alt: "Whatsapp" }
+  { src: whatsapp, alt: "Whatsapp" },
 ];
 
 const Footer = () => {
@@ -58,7 +58,7 @@ const Footer = () => {
             <div className="h-3 w-3 bg-green-500 rounded-full"></div>
           </div>
         </div>
-        <p>
+        <p className="text-[.8rem] mt-2">
           Copyright © 2024 PraiseMedia.
           <br />
           All rights reserved
