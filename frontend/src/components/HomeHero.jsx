@@ -16,7 +16,7 @@ const HomeHero = () => {
               Welcome to <span className="text-gradient">Atom</span>
             </h1>
             <div className="sm:flex sm:mt-2">
-              <p className="text-[1rem] bg-black bg-primary inline-block px-2 bg-opacity-80 px-4 rounded-full">
+              <p className="text-[1rem] bg-black bg-primary inline-block bg-opacity-80 px-4 rounded-[.5rem] sm:rounded-full">
                 {" "}
                 Powering Your Connections
               </p>
