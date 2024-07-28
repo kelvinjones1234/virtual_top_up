@@ -53,9 +53,7 @@ const GeneralNavbar = () => {
     <>
       <div
         className={`p-4 lg:px-0 flex justify-between z-[10] fixed top-0 w-full transition-colors duration-200 ${
-          isScrolled
-            ? "dark:bg-primary bg-gray-50 shadow"
-            : "bg-transparent"
+          isScrolled ? "dark:bg-primary bg-gray-50 shadow" : "bg-transparent"
         }`}
       >
         <div className="flex justify-between lg:px-[6rem] w-[2000px] mx-auto">
@@ -71,7 +69,7 @@ const GeneralNavbar = () => {
               <div className="h-3 w-3 bg-green-500 rounded-full"></div>
             </div>
             <div className="text-primary font-bold dark:text-white">
-              Hi, {user.first_name.toUpperCase()}
+              Hi, {user.first_name.toUpperCase() && user.username.toUpperCase()}
             </div>
           </div>
           <div className="light-dark-mode hidden sm:block">
