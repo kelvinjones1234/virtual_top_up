@@ -90,8 +90,8 @@ const AuthProvider = ({ children }) => {
 
   const refreshToken = async () => {
     try {
-      const response = await axios.post(
-        "http://127.0.0.1:8000/api/token/refresh/",
+      const response = await api.post(
+        "token/refresh/",
         { refresh: authTokens.refresh },
         {
           headers: {
