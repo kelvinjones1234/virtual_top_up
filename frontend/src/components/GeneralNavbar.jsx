@@ -69,7 +69,7 @@ const GeneralNavbar = () => {
               <div className="h-3 w-3 bg-green-500 rounded-full"></div>
             </div>
             <div className="text-primary font-bold dark:text-white">
-              Hi, {user.first_name.toUpperCase() && user.username.toUpperCase()}
+              Hi, {user.first_name.toUpperCase()}
             </div>
           </div>
           <div className="light-dark-mode hidden sm:block">
