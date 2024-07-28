@@ -10,35 +10,35 @@ const inputStyle =
   "dark:bg-[#18202F] bg-white sm:w-[40vw] transition duration-450 ease-in-out mb-2 w-full text-primary dark:text-white py-1 px-4 h-[3.5rem] text-[1.2rem] rounded-2xl outline-0 border border-[#1CCEFF] dark:border-gray-700 dark:hover:border-gray-500 dark:hover:border-black dark:focus:border-[#1CCEFF]";
 
 const Profile = () => {
-  const { authTokens, setUserData, userData } = useContext(AuthContext);
+  const { authTokens } = useContext(AuthContext);
   const [errors, setErrors] = useState({});
   const [successMessage, setSuccessMessage] = useState("");
   const { api } = useContext(GeneralContext);
 
-  // const [userData, setUserData] = useState({
-  //   username: "",
-  //   first_name: "",
-  //   last_name: "",
-  //   phone_number: "",
-  //   transaction_pin: "",
-  // });
+  const [userData, setUserData] = useState({
+    username: "",
+    first_name: "",
+    last_name: "",
+    phone_number: "",
+    transaction_pin: "",
+  });
 
-  // useEffect(() => {
-  //   // Fetch user data
-  //   api
-  //     .get("user/", {
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         Authorization: "Bearer " + String(authTokens.access),
-  //       },
-  //     })
-  //     .then((response) => {
-  //       setUserData(response.data);
-  //     })
-  //     .catch((error) => {
-  //       console.error("There was an error fetching the user data!", error);
-  //     });
-  // }, [authTokens.access]);
+  useEffect(() => {
+    // Fetch user data
+    api
+      .get("user/", {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + String(authTokens.access),
+        },
+      })
+      .then((response) => {
+        setUserData(response.data);
+      })
+      .catch((error) => {
+        console.error("There was an error fetching the user data!", error);
+      });
+  }, [authTokens.access]);
 
   const handleSubmit = (e) => {
     e.preventDefault();

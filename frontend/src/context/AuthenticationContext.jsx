@@ -91,7 +91,7 @@ const AuthProvider = ({ children }) => {
   const refreshToken = async () => {
     try {
       const response = await api.post(
-        "token/refresh/",
+        "api/token/refresh/",
         { refresh: authTokens.refresh },
         {
           headers: {
