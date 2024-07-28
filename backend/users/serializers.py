@@ -10,7 +10,6 @@ class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
         token['username'] = user.username
         token['first_name'] = user.first_name
         token['phone_number'] = user.phone_number
-
         return token
 
 class RegisterSerializer(serializers.ModelSerializer):

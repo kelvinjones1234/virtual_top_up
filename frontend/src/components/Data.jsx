@@ -1,6 +1,4 @@
 import React, { useContext, useEffect, useState } from "react";
-import axios from "axios";
-import { AuthContext } from "../context/AuthenticationContext";
 import GeneralLeft from "./GeneralLeft";
 import GeneralRight from "./GeneralRight";
 import { ProductContext } from "../context/ProductContext";

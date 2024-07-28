@@ -27,7 +27,7 @@ const AuthProvider = ({ children }) => {
       if (authTokens) {
         refreshToken();
       }
-    }, 48 * 60 * 1000);
+    }, 1 * 60 * 1000);
 
     return () => clearInterval(interval);
   }, [authTokens]);
@@ -91,7 +91,7 @@ const AuthProvider = ({ children }) => {
   const refreshToken = async () => {
     try {
       const response = await api.post(
-        "api/token/refresh/",
+        "token/refresh/",
         { refresh: authTokens.refresh },
         {
           headers: {
@@ -128,9 +128,9 @@ const AuthProvider = ({ children }) => {
     loginUser,
     logoutUser,
     registerUser,
+    setUserError,
     user,
     userError,
-    setUserError,
     authTokens,
   };
 

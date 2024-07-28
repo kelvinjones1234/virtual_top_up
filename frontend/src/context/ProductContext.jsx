@@ -1,6 +1,6 @@
-import { createContext, React, useEffect, useState, useContext } from "react";
-import axios from "axios";
+import { createContext, useEffect, useState, useContext } from "react";
 import { GeneralContext } from "./GeneralContext";
+import { AuthContext } from "./AuthenticationContext";
 
 export const ProductContext = createContext();
 
@@ -9,50 +9,35 @@ const ProductProvider = ({ children }) => {
   const [productData, setProductData] = useState([]);
   const [airtimeNetworks, setAirtimeNetworks] = useState([]);
   const [cableCategories, setCableCategories] = useState([]);
-  const [activePath] = useState(location.pathname);
-  
+
   const { api } = useContext(GeneralContext);
-
-
-  useEffect(() => {
-    api
-      .get("data-network/")
-      .then((response) => setDataNetworks(response.data))
-      .catch((error) => console.error("Error fetching networks:", error));
-  }, []);
+  const { user, loginUser } = useContext(AuthContext);
 
   useEffect(() => {
-    // Fetch all airtime networks
-    api
-      .get("airtime-network/")
-      .then((response) => setAirtimeNetworks(response.data))
-      .catch((error) => console.error("Error fetching networks:", error));
-  }, []);
-
-  useEffect(() => {
-    // Fetch all cable category
-    api
-      .get("cable-subscription/category/")
-      .then((response) => setCableCategories(response.data))
-      .catch((error) => console.error("Error fetching networks:", error));
-  }, []);
-
-  useEffect(() => {
-    const products = async () => {
-      const response = await api.get("product-categories/");
-      const data = response.data;
-      setProductData(data);
+    const fetchData = async () => {
+      try {
+        const response = await api.get("combined-data/");
+        const data = response.data;
+        setDataNetworks(data.dataNetworks);
+        setProductData(data.productData);
+        setAirtimeNetworks(data.airtimeNetworks);
+        setCableCategories(data.cableCategories);
+      } catch (error) {
+        console.error("Error fetching combined data:", error);
+      }
     };
 
-    products();
-  }, []);
+    fetchData();
+  }, [loginUser]);
 
   const contextData = {
-    dataNetworks: dataNetworks,
-    productData: productData,
-    airtimeNetworks: airtimeNetworks,
-    cableCategories: cableCategories,
+    dataNetworks,
+    productData,
+    airtimeNetworks,
+    cableCategories,
   };
+
+
   return (
     <ProductContext.Provider value={contextData}>
       {children}
