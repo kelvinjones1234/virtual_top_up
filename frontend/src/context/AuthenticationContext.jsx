@@ -27,7 +27,7 @@ const AuthProvider = ({ children }) => {
       if (authTokens) {
         refreshToken();
       }
-    }, 1 * 60 * 1000);
+    }, 14 * 60 * 1000);
 
     return () => clearInterval(interval);
   }, [authTokens]);
