@@ -21,7 +21,7 @@ const HomePage = () => {
 
   return (
     <>
-      <div className="min-w-[273px] bg-dark-custom-gradient w-full z-[-2] min-w-[150px] relative top-0 left-0 min-h-screen">
+      <div className="min-w-[273px] bg-dark-custom-gradient w-full z-[-2] min-w-[150px] absolute top-0 left-0 min-h-screen">
         <HomePageNavbar
           homeMenuToggle={homeMenuToggle}
           setHomeMenuToggle={setHomeMenuToggle}
