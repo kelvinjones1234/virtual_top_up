@@ -38,7 +38,7 @@ const Profile = () => {
       .catch((error) => {
         console.error("There was an error fetching the user data!", error);
       });
-  }, [authTokens.access]);
+  }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -117,6 +117,7 @@ const Profile = () => {
             </div>
             <div>
               <input
+                disabled
                 type="text"
                 name="first_name"
                 aria-label="First Name"
@@ -127,6 +128,7 @@ const Profile = () => {
             </div>
             <div>
               <input
+                disabled
                 type="text"
                 name="last_name"
                 aria-label="Last Name"

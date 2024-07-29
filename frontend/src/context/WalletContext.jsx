@@ -1,5 +1,11 @@
-import React, { createContext, useContext, useState, useEffect } from "react";
-import axios from "axios";
+import React, {
+  createContext,
+  useContext,
+  useState,
+  useEffect,
+  useMemo,
+  useCallback,
+} from "react";
 import { AuthContext } from "./AuthenticationContext";
 import { GeneralContext } from "./GeneralContext";
 
@@ -10,38 +16,41 @@ export const WalletProvider = ({ children }) => {
   const { user, authTokens } = useContext(AuthContext);
   const { api } = useContext(GeneralContext);
 
+  const fetchWalletData = useCallback(async () => {
+    if (!user?.username || !authTokens?.access) return;
+
+    try {
+      const response = await api.get(`wallet/${user.username}/`, {
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${authTokens.access}`,
+        },
+      });
+      setWalletData(response.data);
+    } catch (error) {
+      console.error("Error:", error.response?.data || error.message);
+    }
+  }, [user, authTokens, api]);
+
   useEffect(() => {
-    const fetchWalletData = async () => {
-      try {
-        const response = await api.get(`wallet/${user.username}/`, {
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${authTokens.access}`,
-          },
-        });
-        setWalletData(response.data);
-      } catch (error) {
-        console.error(
-          "Error:",
-          error.response ? error.response.data : error.message
-        );
-      }
-    };
+    fetchWalletData();
+  }, [fetchWalletData]);
 
-    user && authTokens && fetchWalletData();
-  }, [user, authTokens]);
+  const updateWalletBalance = useCallback((newBalance) => {
+    setWalletData((prevData) => ({ ...prevData, balance: newBalance }));
+  }, []);
 
-  const updateWalletBalance = (newBalance) => {
-    setWalletData((prevData) => ({
-      ...prevData,
-      balance: newBalance,
-    }));
-  };
+  const value = useMemo(
+    () => ({
+      walletData,
+      updateWalletBalance,
+      refreshWallet: fetchWalletData,
+    }),
+    [walletData, updateWalletBalance, fetchWalletData]
+  );
 
   return (
-    <WalletContext.Provider value={{ walletData, updateWalletBalance }}>
-      {children}
-    </WalletContext.Provider>
+    <WalletContext.Provider value={value}>{children}</WalletContext.Provider>
   );
 };
 

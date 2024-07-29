@@ -179,12 +179,12 @@ const GeneralSidebar = ({ generalMenuToggle, handleGeneralMenuToggle }) => {
             >
               <Link
                 to={"/user/dashboard/transactions"}
-                className="flex items-center"
+                className="flex items-center gap-[.9rem]"
               >
                 <img
                   src={transactions}
                   alt=""
-                  className="h-[1.2rem] ml-[.2rem] mr-[1rem]"
+                  className="h-[1.2rem] ml-[.2rem]"
                 />
                 <div>Transactions</div>
               </Link>
