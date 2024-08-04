@@ -13,7 +13,7 @@ const WalletContext = createContext();
 
 export const WalletProvider = ({ children }) => {
   const [walletData, setWalletData] = useState({ balance: 0 });
-  const { user, authTokens } = useContext(AuthContext);
+  const { user, authTokens, logoutUser } = useContext(AuthContext);
   const { api } = useContext(GeneralContext);
 
   const fetchWalletData = useCallback(async () => {
@@ -28,6 +28,7 @@ export const WalletProvider = ({ children }) => {
       });
       setWalletData(response.data);
     } catch (error) {
+      error.response.statusText === "Unauthorized" && logoutUser();
       console.error("Error:", error.response?.data || error.message);
     }
   }, [user, authTokens, api]);

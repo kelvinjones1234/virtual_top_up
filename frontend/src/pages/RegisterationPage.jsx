@@ -3,12 +3,10 @@ import { AuthContext } from "../context/AuthenticationContext";
 import { Link } from "react-router-dom";
 import { GeneralContext } from "../context/GeneralContext";
 import simag from "../assets/vtu3.png";
+import SubmitButton from "../components/SubmitButton";
 
 const LeftSide = () => (
-  <div className="left leading-[3rem] relative hidden justify-center items-center sm:flex h-[364px] shadow-lg shadow-indigo-900/20 bg-opacity-50 rounded-2xl w-[20rem] bg-black text-white">
-    {/* <div className="atom-logo text-[6vw] font-bold text-gradient absolute">
-      Atom <br /> <span className="text-[1.5vw]">Virtual Top Up</span>
-    </div> */}
+  <div className="left mt-4 leading-[3rem] relative hidden justify-center items-center sm:flex h-[364px] shadow-lg shadow-indigo-900/20 bg-opacity-50 rounded-2xl w-[20rem] bg-black text-white">
     <img src={simag} alt="" className="h-[365px]" />
   </div>
 );
@@ -18,7 +16,9 @@ const inputStyle =
 
 const RegisterationPage = () => {
   const [isScrolled, setIsScrolled] = useState(false);
-  const { registerUser } = useContext(AuthContext);
+  const [errorMessage, setErrorMessage] = useState({});
+
+  const { registerUser, registerErrors } = useContext(AuthContext);
   const { setLoading } = useContext(GeneralContext);
 
   const [formData, setFormData] = useState({
@@ -53,8 +53,53 @@ const RegisterationPage = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    registerUser(formData);
+    if (validInputs()) {
+      setLoading(true);
+      registerUser(formData).finally(() => {
+        setLoading(false);
+      });
+    }
   };
+
+  const validInputs = () => {
+    const newError = {};
+    if (!formData.username) {
+      newError.usernameError = "Please fill in your username";
+    }
+    if (formData.password.length < 8) {
+      newError.passwordError = "Your password must be at least 8 characters";
+    }
+    if (formData.password !== formData.confirm_password) {
+      newError.confirm_passwordError = "Passwords do not match";
+    }
+    if (!formData.transaction_pin) {
+      newError.transaction_pinError = "Please fill in your transaction pin";
+    } else if (
+      formData.transaction_pin.length !== 4 ||
+      isNaN(formData.transaction_pin)
+    ) {
+      newError.transaction_pinError =
+        "Transaction pin must be exactly four digits";
+    }
+    if (!formData.first_name) {
+      newError.first_nameError = "Please fill in your first name";
+    }
+    if (!formData.last_name) {
+      newError.last_nameError = "Please fill in your last name";
+    }
+    if (formData.phone_number.length !== 11 || isNaN(formData.phone_number)) {
+      newError.phone_numberError =
+        "Phone number must be exactly 11 digits and numeric";
+    }
+    if (!formData.email) {
+      newError.emailError = "Please fill in your email";
+    }
+    setErrorMessage(newError);
+    return Object.keys(newError).length === 0;
+  };
+
+  console.log(errorMessage);
+
   return (
     <div className="min-w-[150px] bg-opacity-[95%] z-[-1] font-body_two bg-dark-custom-gradient w-full z-[-2] min-w-[150px] absolute top-0 left-0 min-h-screen">
       <div className="authentication bg-bg_one bg-contain md:bg-cover bg-center w-full min-h-screen bg-no-repeat fixed z-[-1]"></div>
@@ -96,6 +141,11 @@ const RegisterationPage = () => {
             <form onSubmit={handleSubmit}>
               <div className="flex flex-wrap justify-between">
                 <div className="w-full sm:w-[48%]">
+                  {errorMessage.first_nameError && (
+                    <div className="text-white">
+                      {errorMessage.first_nameError}
+                    </div>
+                  )}
                   <input
                     type="text"
                     placeholder="First Name"
@@ -106,6 +156,11 @@ const RegisterationPage = () => {
                   />
                 </div>
                 <div className="w-full sm:w-[48%]">
+                  {errorMessage.last_nameError && (
+                    <div className="text-white">
+                      {errorMessage.last_nameError}
+                    </div>
+                  )}
                   <input
                     type="text"
                     placeholder="Last Name"
@@ -116,6 +171,17 @@ const RegisterationPage = () => {
                   />
                 </div>
                 <div className="w-full sm:w-[48%]">
+                  {errorMessage.usernameError ? (
+                    <div className="text-white">
+                      {errorMessage.usernameError}
+                    </div>
+                  ) : (
+                    registerErrors.username && (
+                      <div className="text-white">
+                        {registerErrors.username[0]}
+                      </div>
+                    )
+                  )}
                   <input
                     type="text"
                     placeholder="Username"
@@ -126,6 +192,9 @@ const RegisterationPage = () => {
                   />
                 </div>
                 <div className="w-full sm:w-[48%]">
+                  {errorMessage.emailError && (
+                    <div className="text-white">{errorMessage.emailError}</div>
+                  )}
                   <input
                     type="text"
                     placeholder="Email address"
@@ -135,7 +204,13 @@ const RegisterationPage = () => {
                     onChange={handleChange}
                   />
                 </div>
+
                 <div className="w-full sm:w-[48%]">
+                  {errorMessage.phone_numberError && (
+                    <div className="text-white">
+                      {errorMessage.phone_numberError}
+                    </div>
+                  )}
                   <input
                     type="text"
                     placeholder="Phone Number"
@@ -145,10 +220,22 @@ const RegisterationPage = () => {
                     onChange={handleChange}
                   />
                 </div>
+
                 <div className="w-full sm:w-[48%]">
+                  {errorMessage.transaction_pinError ? (
+                    <div className="text-white">
+                      {errorMessage.transaction_pinError}
+                    </div>
+                  ) : (
+                    registerErrors.transaction_pin && (
+                      <div className="text-white">
+                        {registerErrors.transaction_pin[0]}
+                      </div>
+                    )
+                  )}
                   <input
                     type="password"
-                    placeholder="Transaction Pin"
+                    placeholder="Enter a Four Digit Transaction Pin"
                     className={inputStyle}
                     name="transaction_pin"
                     autoComplete="current-password"
@@ -157,6 +244,11 @@ const RegisterationPage = () => {
                   />
                 </div>
                 <div className="w-full sm:w-[48%]">
+                  {errorMessage.passwordError && (
+                    <div className="text-white">
+                      {errorMessage.passwordError}
+                    </div>
+                  )}
                   <input
                     type="password"
                     placeholder="Password"
@@ -168,6 +260,11 @@ const RegisterationPage = () => {
                   />
                 </div>
                 <div className="w-full sm:w-[48%]">
+                  {errorMessage.confirm_passwordError && (
+                    <div className="text-white">
+                      {errorMessage.confirm_passwordError}
+                    </div>
+                  )}
                   <input
                     type="password"
                     placeholder="Confirm Password"
@@ -179,13 +276,13 @@ const RegisterationPage = () => {
                   />
                 </div>
               </div>
-              <div className="ss:pb-16">
-                <button
-                  className="my-6 w-full p-1 h-[3.2rem] bg-link text-black rounded-2xl bg-opacity-90 font-semibold hover:bg-sky-500 transition duration-450 ease-in-out"
-                  type="submit"
-                >
-                  Register
-                </button>
+              <p className="text-center text-white">
+                By signing in to Atom, you agree to our{" "}
+                <span className="underline text-link">terms</span> and{" "}
+                <span className="underline text-link">conditions</span>
+              </p>
+              <div className="ss:pb-16 my-4">
+                <SubmitButton label="Register" />
               </div>
             </form>
             <div className="text-center text-[1rem] text-gray-300 pt-4 pb-[6rem] ss:hidden">

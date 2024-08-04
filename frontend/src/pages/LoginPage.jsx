@@ -10,7 +10,7 @@ const LeftSide = () => (
     {/* <div className="atom-logo text-[6vw] font-bold text-gradient absolute">
       Atom <br /> <span className="text-[1.5vw]">Virtual Top Up</span>
     </div> */}
-    <img src={simag} alt="" className="h-[365px]"/>
+    <img src={simag} alt="" className="h-[365px]" />
   </div>
 );
 
@@ -98,7 +98,12 @@ const LoginPage = () => {
                 <p>Incorrect login details.</p>
               </div>
             )}
-            <div>
+            <div className=""> 
+              {errorMessage.usernameError && (
+                <div className="text-white">
+                  {errorMessage.usernameError}
+                </div>
+              )}
               <input
                 type="text"
                 value={username}
@@ -107,13 +112,11 @@ const LoginPage = () => {
                 onChange={(e) => setUsername(e.target.value)}
                 className="transition duration-450 ease-in-out my-2 w-full text-white py-1 px-4 h-[3.5rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-700 hover:border-black focus:border-link bg-opacity-80"
               />
-              {errorMessage.usernameError && (
-                <div className="text-white mb-3 ">
-                  {errorMessage.usernameError}
-                </div>
-              )}
             </div>
-            <div>
+            <div className="my-4">
+              {errorMessage.passwordError && (
+                <div className="text-white">{errorMessage.passwordError}</div>
+              )}
               <input
                 type="password"
                 placeholder="Password"
@@ -123,9 +126,6 @@ const LoginPage = () => {
                 autoComplete="current-password"
                 className="transition duration-450 ease-in-out my-2 w-full text-white py-1 px-4 h-[3.5rem] bg-[#18202F] text-[1.2rem] rounded-2xl outline-0 border border-gray-700 hover:border-black focus:border-link bg-opacity-80"
               />
-              {errorMessage.passwordError && (
-                <div className="text-white">{errorMessage.passwordError}</div>
-              )}
             </div>
             <div className="flex flex-wrap w-full text-white justify-between text-[1rem] text-gray-300 py-5">
               <div className="flex items-center">

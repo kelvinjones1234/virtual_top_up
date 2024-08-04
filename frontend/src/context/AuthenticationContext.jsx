@@ -1,5 +1,4 @@
 import { createContext, useState, useEffect, useContext } from "react";
-import axios from "axios";
 import { jwtDecode } from "jwt-decode";
 import { useNavigate } from "react-router-dom";
 import { GeneralContext } from "./GeneralContext";
@@ -8,6 +7,8 @@ export const AuthContext = createContext();
 
 const AuthProvider = ({ children }) => {
   const [userError, setUserError] = useState("");
+  const [registerErrors, setRegisterErrors] = useState({});
+
   const navigate = useNavigate();
   const { api } = useContext(GeneralContext);
 
@@ -27,7 +28,7 @@ const AuthProvider = ({ children }) => {
       if (authTokens) {
         refreshToken();
       }
-    }, 14 * 60 * 1000);
+    }, 17 * 60 * 1000);
 
     return () => clearInterval(interval);
   }, [authTokens]);
@@ -57,6 +58,9 @@ const AuthProvider = ({ children }) => {
       } else {
         alert("Something went wrong!");
       }
+      if (response.status === 401) {
+        logoutUser();
+      }
     } catch (error) {
       setUserError(error.response.data.detail);
 
@@ -81,6 +85,9 @@ const AuthProvider = ({ children }) => {
         alert("Something went wrong!");
       }
     } catch (error) {
+      const newError = {};
+      const errors = error.response.data;
+      setRegisterErrors(errors);
       console.error(
         "Error:",
         error.response ? error.response.data : error.message
@@ -129,6 +136,7 @@ const AuthProvider = ({ children }) => {
     logoutUser,
     registerUser,
     setUserError,
+    registerErrors,
     user,
     userError,
     authTokens,

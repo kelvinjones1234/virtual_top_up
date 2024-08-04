@@ -109,7 +109,7 @@ const GeneralSidebar = ({ generalMenuToggle, handleGeneralMenuToggle }) => {
                 </Link>
               </li>
               <li
-                className="mt-4 items-center flex py-3 px-2 rounded-xl"
+                className="mt-4 items-center flex py-3 px-2 rounded-xl cursor-pointer"
                 onClick={handleTransferForm}
               >
                 <img
@@ -234,7 +234,7 @@ const GeneralSidebar = ({ generalMenuToggle, handleGeneralMenuToggle }) => {
               <div>About</div>
             </li>
             <li
-              className="mb-10 mt-4 items-center flex  py-3 px-2 rounded-xl"
+              className="mb-10 mt-4 items-center flex  py-3 px-2 rounded-xl cursor-pointer"
               onClick={logoutUser}
             >
               <img
